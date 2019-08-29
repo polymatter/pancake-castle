@@ -1,5 +1,6 @@
+<!-- Represents Editing a specific Predicate -->
 <template>
-  <div class="hello">
+  <div class="predicate">
     <h1>Subject</h1>
     <select v-model="subjects" multiple>
       <option>I</option>
@@ -23,36 +24,14 @@
 
 <script>
 export default {
-  name: 'HelloWorld',
+  name: 'Predicate',
   props: {
-    msg: String
+    conjugateVerb: Function
   },
   data: function() {
     return {
       subjects: [],
-      verb: "",
-      verbConjugate: {
-        "to sing": function(firstperson, plural) {
-          let base = 'to sing'.replace('to ', '');
-          let suffix = firstperson || plural ? '' : 's';
-          return base + suffix;
-        },
-        "to eat": function(firstperson, plural) {
-          let base = 'to eat'.replace('to ', '');
-          let suffix = firstperson || plural ? '' : 's';
-          return base + suffix;
-        },
-        "to wash": function(firstperson, plural) {
-          let base = 'to wash'.replace('to ', '');
-          let suffix = firstperson || plural ? '' : 's';
-          return base + suffix;
-        },
-        "to dance": function(firstperson, plural) {
-          let base = 'to dance'.replace('to ', '');
-          let suffix = firstperson || plural ? '' : 's';
-          return base + suffix;
-        }
-      }
+      verb: ""
     }
   },
   computed: {
@@ -64,7 +43,7 @@ export default {
         if (plural) {
           _subjects = this.subjects.map(s => s.replace(/^I$/, 'Me'));
         }
-        return _subjects.join(' and ') + " " + this.verbConjugate[this.verb](firstperson, plural);
+        return _subjects.join(' and ') + " " + this.conjugateVerb(this.verb, {firstperson, plural});
       } else {
         return "---"
       }
