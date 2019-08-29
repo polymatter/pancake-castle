@@ -20,9 +20,15 @@ export default {
         {infinitive: 'to dance', regular: true}
       ],
       conjugateVerb: function(verb, context) {
-        let base = verb.infinitive.replace("to ", "");
-        let suffix = context.firstperson || context.plural ? "" : "s";
-        return base + suffix;
+        let conjugatedVerb;
+        if (verb.regular) {
+          let base = verb.infinitive.replace("to ", "");
+          let suffix = context.firstperson || context.plural ? "" : "s";
+          conjugatedVerb = base + suffix;
+        } else {
+          conjugatedVerb = "CAN NOT CONJUGATE!!"
+        }
+        return conjugatedVerb;
       },
       selectedSentenceIndex: 0,
       sentences: [{ subject: {}, predicate: {} }]
