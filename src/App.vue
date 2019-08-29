@@ -1,5 +1,7 @@
 <template>
   <div id="app">
+    <Argument v-bind:argument="selectedSentence.subject"
+      v-bind:allElements="allElements"/>
     <Predicate v-bind:predicate="selectedSentence.predicate" 
       v-bind:conjugateVerb="conjugateVerb"
       v-bind:allVerbs="allVerbs"/>
@@ -7,12 +9,19 @@
 </template>
 
 <script>
+import Argument from "./components/Argument.vue";
 import Predicate from "./components/Predicate.vue";
 
 export default {
   name: "app",
   data: function() {
     return {
+      allElements: [
+        {key: 'I', value: 'I'},
+        {key: 'You', value: 'You'},
+        {key: 'Jeffrey', value: 'Jeffrey'},
+        {key: 'Trish', value: 'Trish'}
+      ],
       allVerbs: [
         {infinitive: 'to eat', regular: true},
         {infinitive: 'to sing', regular: true},
@@ -40,6 +49,7 @@ export default {
     }
   },
   components: {
+    Argument,
     Predicate
   }
 };
