@@ -1,7 +1,8 @@
 <template>
   <div id="app">
     <Predicate v-bind:predicate="selectedSentence.predicate" 
-      v-bind:conjugateVerb="conjugateVerb"/>
+      v-bind:conjugateVerb="conjugateVerb"
+      v-bind:allVerbs="allVerbs"/>
   </div>
 </template>
 
@@ -12,8 +13,14 @@ export default {
   name: "app",
   data: function() {
     return {
+      allVerbs: [
+        {infinitive: 'to eat', regular: true},
+        {infinitive: 'to sing', regular: true},
+        {infinitive: 'to wash', regular: true},
+        {infinitive: 'to dance', regular: true}
+      ],
       conjugateVerb: function(verb, context) {
-        let base = verb.replace("to ", "");
+        let base = verb.infinitive.replace("to ", "");
         let suffix = context.firstperson || context.plural ? "" : "s";
         return base + suffix;
       },

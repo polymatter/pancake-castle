@@ -12,10 +12,9 @@
     <h1>Predicate</h1>
     <h2>Verb</h2>
     <select v-model="verb">
-      <option>to sing</option>
-      <option>to eat</option>
-      <option>to wash</option>
-      <option>to dance</option>
+      <option v-for="verb in allVerbs" v-bind:key="verb.infinitive" v-bind:value="verb">
+        {{verb.infinitive}}
+      </option>
     </select>
     <hr/>
     {{ sentence }}
@@ -26,17 +25,18 @@
 export default {
   name: 'Predicate',
   props: {
+    allVerbs: Array,
     conjugateVerb: Function
   },
   data: function() {
     return {
       subjects: [],
-      verb: ""
+      verb: undefined
     }
   },
   computed: {
     sentence: function() {
-      if (this.subjects.length > 0 && this.verb.length > 0) {
+      if (this.subjects.length > 0 && this.verb) {
         let firstperson = this.subjects[0] === "I" && this.subjects.length === 1;
         let plural = this.subjects.length > 1
         let _subjects = this.subjects;
