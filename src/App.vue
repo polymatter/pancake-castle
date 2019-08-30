@@ -1,13 +1,17 @@
 <template>
   <div id="app">
-    <Argument v-bind:argument="selectedSentence.subject"
+    <Argument
+      v-bind:argument="selectedSentence.subject"
       v-bind:isSubject="true"
       v-bind:allElements="allElements"
-      v-on:argumentUpdate="subjectUpdated"/>
-    <Predicate v-bind:predicate="selectedSentence.predicate" 
+      v-on:argumentUpdate="subjectUpdated"
+    />
+    <Predicate
+      v-bind:predicate="selectedSentence.predicate"
       v-bind:conjugateVerb="conjugateVerb"
       v-bind:allVerbs="allVerbs"
-      v-on:predicateUpdate="predicateUpdated"/>
+      v-on:predicateUpdate="predicateUpdated"
+    />
     {{ selectedSentence }}
   </div>
 </template>
@@ -21,16 +25,16 @@ export default {
   data: function() {
     return {
       allElements: [
-        {key: 'I', value: 'I'},
-        {key: 'You', value: 'You'},
-        {key: 'Jeffrey', value: 'Jeffrey'},
-        {key: 'Trish', value: 'Trish'}
+        { key: "I", value: "I" },
+        { key: "You", value: "You" },
+        { key: "Jeffrey", value: "Jeffrey" },
+        { key: "Trish", value: "Trish" }
       ],
       allVerbs: [
-        {infinitive: 'to eat', regular: true},
-        {infinitive: 'to sing', regular: true},
-        {infinitive: 'to wash', regular: true},
-        {infinitive: 'to dance', regular: true}
+        { infinitive: "to eat", regular: true },
+        { infinitive: "to sing", regular: true },
+        { infinitive: "to wash", regular: true },
+        { infinitive: "to dance", regular: true }
       ],
       selectedSentenceIndex: 0,
       sentences: [{ subject: {}, predicate: {} }]
@@ -38,16 +42,16 @@ export default {
   },
   methods: {
     conjugateVerb: function(verb, context) {
-        let conjugatedVerb;
-        if (verb.regular) {
-          let base = verb.infinitive.replace("to ", "");
-          let suffix = context.firstperson || context.plural ? "" : "s";
-          conjugatedVerb = base + suffix;
-        } else {
-          conjugatedVerb = "CAN NOT CONJUGATE!!"
-        }
-        return conjugatedVerb;
-      },
+      let conjugatedVerb;
+      if (verb.regular) {
+        let base = verb.infinitive.replace("to ", "");
+        let suffix = context.firstperson || context.plural ? "" : "s";
+        conjugatedVerb = base + suffix;
+      } else {
+        conjugatedVerb = "CAN NOT CONJUGATE!!";
+      }
+      return conjugatedVerb;
+    },
     predicateUpdated: function(predicate) {
       this.selectedSentence.predicate = predicate;
     },
