@@ -5,7 +5,9 @@
       v-bind:allElements="allElements"/>
     <Predicate v-bind:predicate="selectedSentence.predicate" 
       v-bind:conjugateVerb="conjugateVerb"
-      v-bind:allVerbs="allVerbs"/>
+      v-bind:allVerbs="allVerbs"
+      v-on:predicateUpdate="predicateUpdated"/>
+    {{ selectedSentence }}
   </div>
 </template>
 
@@ -29,7 +31,12 @@ export default {
         {infinitive: 'to wash', regular: true},
         {infinitive: 'to dance', regular: true}
       ],
-      conjugateVerb: function(verb, context) {
+      selectedSentenceIndex: 0,
+      sentences: [{ subject: {}, predicate: {} }]
+    };
+  },
+  methods: {
+    conjugateVerb: function(verb, context) {
         let conjugatedVerb;
         if (verb.regular) {
           let base = verb.infinitive.replace("to ", "");
@@ -40,9 +47,9 @@ export default {
         }
         return conjugatedVerb;
       },
-      selectedSentenceIndex: 0,
-      sentences: [{ subject: {}, predicate: {} }]
-    };
+    predicateUpdated: function(predicate) {
+      this.selectedSentence.predicate = predicate;
+    }
   },
   computed: {
     selectedSentence: function() {

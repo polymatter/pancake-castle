@@ -34,6 +34,11 @@ export default {
       verb: undefined
     }
   },
+  watch: {
+    verb: function(newVerb) {
+      this.$emit('predicateUpdate', newVerb);
+    }
+  },
   computed: {
     sentence: function() {
       if (this.subjects.length > 0 && this.verb) {
