@@ -31,7 +31,7 @@ export default {
     verb: function(newVerb) {
       this.$emit("predicateUpdate", newVerb);
     }
-  },
+  }
 };
 </script>
 
