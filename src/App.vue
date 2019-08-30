@@ -26,8 +26,8 @@ export default {
   data: function() {
     return {
       allElements: [
-        { key: "I", value: "I" },
-        { key: "You", value: "You" },
+        { key: "I", value: "I", firstperson: true, pluralSubjectForm: 'Me' },
+        { key: "You", value: "You", secondperson: true },
         { key: "Jeffrey", value: "Jeffrey" },
         { key: "Trish", value: "Trish" }
       ],
@@ -38,7 +38,7 @@ export default {
         { infinitive: "to dance", regular: true }
       ],
       selectedSentenceIndex: 0,
-      sentences: [{ subject: {}, predicate: {} }]
+      sentences: [{ subject: [], predicate: {} }]
     };
   },
   methods: {
@@ -63,25 +63,20 @@ export default {
   computed: {
     makeSentence: function() {
       let sentence = this.selectedSentence;
-      if (
-        sentence.subject &&
-        sentence.subject.length > 0 &&
-        sentence.predicate
-      ) {
-        let firstperson =
-          sentence.subject[0] === "I" && sentence.subject.length === 1;
+      if (sentence.subject && sentence.predicate) {
+        let firstperson = !!sentence.predicate.firstperson;
         let plural = sentence.subject.length > 1;
         let _subjects = sentence.subject;
-        if (plural) {
-          _subjects = sentence.subject.map(s => s.replace(/^I$/, "Me"));
-        }
+        // if (plural) {
+        //   _subjects = sentence.subject.map(s => s.replace(/^I$/, "Me"));
+        // }
         return (
           _subjects.join(" and ") +
           " " +
           this.conjugateVerb(sentence.predicate, { firstperson, plural })
         );
       } else {
-        return sentence;
+        return '---';
       }
     },
     selectedSentence: function() {
