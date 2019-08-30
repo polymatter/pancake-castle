@@ -13,6 +13,7 @@
       v-on:predicateUpdate="predicateUpdated"
     />
     {{ selectedSentence }}
+    {{ makeSentence }}
   </div>
 </template>
 
@@ -60,6 +61,29 @@ export default {
     }
   },
   computed: {
+    makeSentence: function() {
+      let sentence = this.selectedSentence;
+      if (
+        sentence.subject &&
+        sentence.subject.length > 0 &&
+        sentence.predicate
+      ) {
+        let firstperson =
+          sentence.subject[0] === "I" && sentence.subject.length === 1;
+        let plural = sentence.subject.length > 1;
+        let _subjects = sentence.subject;
+        if (plural) {
+          _subjects = sentence.subject.map(s => s.replace(/^I$/, "Me"));
+        }
+        return (
+          _subjects.join(" and ") +
+          " " +
+          this.conjugateVerb(sentence.predicate, { firstperson, plural })
+        );
+      } else {
+        return sentence;
+      }
+    },
     selectedSentence: function() {
       return this.sentences[this.selectedSentenceIndex];
     }
