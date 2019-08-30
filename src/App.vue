@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <Argument v-bind:argument="selectedSentence.subject"
+      v-bind:isSubject="true"
       v-bind:allElements="allElements"/>
     <Predicate v-bind:predicate="selectedSentence.predicate" 
       v-bind:conjugateVerb="conjugateVerb"
