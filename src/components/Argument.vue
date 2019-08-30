@@ -1,6 +1,6 @@
 <!-- Represents Editing a specific Predicate Argument -->
 <template>
-  <div class="argumet">
+  <div class="argument">
     <h1>Argument</h1>
     <select v-model="elements" multiple>
       <option v-for="element in allElements" v-bind:key="element.key" v-bind:value="element.value">
