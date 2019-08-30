@@ -3,7 +3,7 @@
   <div class="argument">
     <h1 v-if="isSubject">Subject</h1>
     <h1 v-if="!isSubject">Argument</h1>
-    <select v-model="elements" multiple>
+    <select v-model="elements" v-on:change="argumentUpdate" multiple>
       <option v-for="element in allElements" v-bind:key="element.key" v-bind:value="element.value">
           {{element.value}}
       </option>
@@ -23,6 +23,11 @@ export default {
       elements: []
     }
   },
+  methods: {
+    argumentUpdate: function() {
+      this.$emit('argumentUpdate', this.elements);
+    },
+  }
 }
 </script>
 

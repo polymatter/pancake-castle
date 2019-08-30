@@ -2,7 +2,8 @@
   <div id="app">
     <Argument v-bind:argument="selectedSentence.subject"
       v-bind:isSubject="true"
-      v-bind:allElements="allElements"/>
+      v-bind:allElements="allElements"
+      v-on:argumentUpdate="subjectUpdated"/>
     <Predicate v-bind:predicate="selectedSentence.predicate" 
       v-bind:conjugateVerb="conjugateVerb"
       v-bind:allVerbs="allVerbs"
@@ -49,6 +50,9 @@ export default {
       },
     predicateUpdated: function(predicate) {
       this.selectedSentence.predicate = predicate;
+    },
+    subjectUpdated: function(subject) {
+      this.selectedSentence.subject = subject;
     }
   },
   computed: {
