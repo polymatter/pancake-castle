@@ -79,11 +79,7 @@ export default {
   computed: {
     formPhrase: function() {
       let phrase = this.selectedPhrase;
-      if (
-        phrase.subject &&
-        phrase.predicate &&
-        phrase.subject.length > 0
-      ) {
+      if (phrase.subject && phrase.predicate && phrase.subject.length > 0) {
         let firstperson =
           !!phrase.subject[0].firstperson && phrase.subject.length === 1;
         let secondperson =
