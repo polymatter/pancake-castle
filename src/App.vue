@@ -13,7 +13,7 @@
       v-on:predicateUpdate="predicateUpdated"
     />
     {{ selectedSentence }}
-    <hr/>
+    <hr />
     {{ makeSentence }}
   </div>
 </template>
@@ -27,7 +27,7 @@ export default {
   data: function() {
     return {
       allElements: [
-        { key: "I", value: "I", firstperson: true, pluralSubjectForm: 'Me' },
+        { key: "I", value: "I", firstperson: true, pluralSubjectForm: "Me" },
         { key: "You", value: "You", secondperson: true },
         { key: "Jeffrey", value: "Jeffrey" },
         { key: "Trish", value: "Trish" }
@@ -35,7 +35,7 @@ export default {
       allVerbs: [
         { infinitive: "to eat", regular: true },
         { infinitive: "to sing", regular: true },
-        { infinitive: "to wash", regular: true, endsWithSibilant:true },
+        { infinitive: "to wash", regular: true, endsWithSibilant: true },
         { infinitive: "to dance", regular: true }
       ],
       selectedSentenceIndex: 0,
@@ -47,7 +47,12 @@ export default {
       let conjugatedVerb;
       if (verb.regular) {
         let base = verb.infinitive.replace("to ", "");
-        let suffix = context.firstperson || context.secondperson || context.plural ? "" : (verb.endsWithSibilant ? "es" : "s");
+        let suffix =
+          context.firstperson || context.secondperson || context.plural
+            ? ""
+            : verb.endsWithSibilant
+            ? "es"
+            : "s";
         conjugatedVerb = base + suffix;
       } else {
         conjugatedVerb = "---";
@@ -64,18 +69,30 @@ export default {
   computed: {
     makeSentence: function() {
       let sentence = this.selectedSentence;
-      if (sentence.subject && sentence.predicate && sentence.subject.length > 0) {
-        let firstperson = !!sentence.subject[0].firstperson && sentence.subject.length === 1;
-        let secondperson = !!sentence.subject[0].secondperson && sentence.subject.length === 1;
+      if (
+        sentence.subject &&
+        sentence.predicate &&
+        sentence.subject.length > 0
+      ) {
+        let firstperson =
+          !!sentence.subject[0].firstperson && sentence.subject.length === 1;
+        let secondperson =
+          !!sentence.subject[0].secondperson && sentence.subject.length === 1;
         let plural = sentence.subject.length > 1;
         let _subjects = sentence.subject;
         return (
-          _subjects.map(s => plural ? s.pluralSubjectForm || s.value : s.value).join(" and ") +
+          _subjects
+            .map(s => (plural ? s.pluralSubjectForm || s.value : s.value))
+            .join(" and ") +
           " " +
-          this.conjugateVerb(sentence.predicate, { firstperson, secondperson, plural })
+          this.conjugateVerb(sentence.predicate, {
+            firstperson,
+            secondperson,
+            plural
+          })
         );
       } else {
-        return '---';
+        return "---";
       }
     },
     selectedSentence: function() {
