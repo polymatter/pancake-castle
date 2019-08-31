@@ -33,10 +33,15 @@ export default {
         { key: "Trish", value: "Trish" }
       ],
       allVerbs: [
-        { key: 'eat1', infinitive: "to eat", regular: true },
-        { key: 'sing1', infinitive: "to sing", regular: true },
-        { key: 'wash1', infinitive: "to wash", regular: true, endsWithSibilant: true },
-        { key: 'dance1', infinitive: "to dance", regular: true }
+        { key: "eat1", infinitive: "to eat", regular: true },
+        { key: "sing1", infinitive: "to sing", regular: true },
+        {
+          key: "wash1",
+          infinitive: "to wash",
+          regular: true,
+          endsWithSibilant: true
+        },
+        { key: "dance1", infinitive: "to dance", regular: true }
       ],
       selectedSentenceIndex: 0,
       sentences: [{ subject: [], predicate: {} }]
@@ -61,7 +66,9 @@ export default {
     },
     andConcatinate: function(values) {
       let lastValue = values.pop();
-      return values.length > 0 ? values.join(', ') + ' and ' + lastValue : lastValue;
+      return values.length > 0
+        ? values.join(", ") + " and " + lastValue
+        : lastValue;
     },
     predicateUpdated: function(predicate) {
       this.selectedSentence.predicate = predicate;
@@ -85,9 +92,11 @@ export default {
         let plural = sentence.subject.length > 1;
         let _subjects = sentence.subject;
         return (
-          this.andConcatinate(_subjects
-            .map(s => (plural ? s.pluralSubjectForm || s.value : s.value)))
-            +
+          this.andConcatinate(
+            _subjects.map(s =>
+              plural ? s.pluralSubjectForm || s.value : s.value
+            )
+          ) +
           " " +
           this.conjugateVerb(sentence.predicate, {
             firstperson,
