@@ -7,7 +7,7 @@
       <option
         v-for="element in allElements"
         v-bind:key="element.key"
-        v-bind:value="element.value"
+        v-bind:value="element"
       >{{element.value}}</option>
     </select>
   </div>
