@@ -78,8 +78,9 @@ export default {
   },
   computed: {
     formPhrase: function() {
-      let phrase = this.selectedPhrase;
+      let result = "---";
       if (phrase.subject && phrase.predicate && phrase.subject.length > 0) {
+        let phrase = this.selectedPhrase;
         let firstperson =
           !!phrase.subject[0].firstperson && phrase.subject.length === 1;
         let secondperson =
@@ -88,18 +89,16 @@ export default {
         let subjectFormed = plural
           ? phrase.subject.map(e => e.pluralSubjectForm || e.value)
           : phrase.subject.map(e => e.value);
-        return (
+        result =
           this.andConcatinate(subjectFormed) +
           " " +
           this.formVerb(phrase.predicate, {
             firstperson,
             secondperson,
             plural
-          })
-        );
-      } else {
-        return "---";
+          });
       }
+      return result;
     },
     selectedPhrase: function() {
       return this.phrases[this.phraseIndex];
