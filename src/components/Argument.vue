@@ -4,11 +4,7 @@
     <h1 v-if="isSubject">Subject</h1>
     <h1 v-if="!isSubject">Argument</h1>
     <select v-model="nouns" v-on:change="argumentUpdate" multiple>
-      <option
-        v-for="noun in allNouns"
-        v-bind:key="noun.key"
-        v-bind:value="noun"
-      >{{noun.value}}</option>
+      <option v-for="noun in allNouns" v-bind:key="noun.key" v-bind:value="noun">{{noun.value}}</option>
     </select>
   </div>
 </template>
