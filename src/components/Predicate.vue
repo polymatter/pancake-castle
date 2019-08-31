@@ -6,7 +6,7 @@
     <select v-model="verb">
       <option
         v-for="verb in allVerbs"
-        v-bind:key="verb.infinitive"
+        v-bind:key="verb.key"
         v-bind:value="verb"
       >{{verb.infinitive}}</option>
     </select>

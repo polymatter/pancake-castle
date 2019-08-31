@@ -33,10 +33,10 @@ export default {
         { key: "Trish", value: "Trish" }
       ],
       allVerbs: [
-        { infinitive: "to eat", regular: true },
-        { infinitive: "to sing", regular: true },
-        { infinitive: "to wash", regular: true, endsWithSibilant: true },
-        { infinitive: "to dance", regular: true }
+        { key: 'eat1', infinitive: "to eat", regular: true },
+        { key: 'sing1', infinitive: "to sing", regular: true },
+        { key: 'wash1', infinitive: "to wash", regular: true, endsWithSibilant: true },
+        { key: 'dance1', infinitive: "to dance", regular: true }
       ],
       selectedSentenceIndex: 0,
       sentences: [{ subject: [], predicate: {} }]
