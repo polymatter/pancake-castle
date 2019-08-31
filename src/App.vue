@@ -59,6 +59,10 @@ export default {
       }
       return conjugatedVerb;
     },
+    andConcatinate: function(values) {
+      let lastValue = values.pop();
+      return values.length > 0 ? values.join(', ') + ' and ' + lastValue : lastValue;
+    },
     predicateUpdated: function(predicate) {
       this.selectedSentence.predicate = predicate;
     },
@@ -81,9 +85,9 @@ export default {
         let plural = sentence.subject.length > 1;
         let _subjects = sentence.subject;
         return (
-          _subjects
-            .map(s => (plural ? s.pluralSubjectForm || s.value : s.value))
-            .join(" and ") +
+          this.andConcatinate(_subjects
+            .map(s => (plural ? s.pluralSubjectForm || s.value : s.value)))
+            +
           " " +
           this.conjugateVerb(sentence.predicate, {
             firstperson,
