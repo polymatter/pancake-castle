@@ -90,13 +90,11 @@ export default {
         let secondperson =
           !!sentence.subject[0].secondperson && sentence.subject.length === 1;
         let plural = sentence.subject.length > 1;
-        let _subjects = sentence.subject;
+        let subjectFormed = plural
+          ? sentence.subject.map(e => e.pluralSubjectForm || e.value)
+          : sentence.subject.map(e => e.value);
         return (
-          this.andConcatinate(
-            _subjects.map(s =>
-              plural ? s.pluralSubjectForm || s.value : s.value
-            )
-          ) +
+          this.andConcatinate(subjectFormed) +
           " " +
           this.conjugateVerb(sentence.predicate, {
             firstperson,
