@@ -50,7 +50,7 @@ export default {
         let suffix = context.firstperson || context.secondperson || context.plural ? "" : (verb.endsWithSibilant ? "es" : "s");
         conjugatedVerb = base + suffix;
       } else {
-        conjugatedVerb = "CAN NOT CONJUGATE!!";
+        conjugatedVerb = "---";
       }
       return conjugatedVerb;
     },
