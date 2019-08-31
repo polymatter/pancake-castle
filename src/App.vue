@@ -78,24 +78,24 @@ export default {
   },
   computed: {
     formPhrase: function() {
-      let sentence = this.selectedPhrase;
+      let phrase = this.selectedPhrase;
       if (
-        sentence.subject &&
-        sentence.predicate &&
-        sentence.subject.length > 0
+        phrase.subject &&
+        phrase.predicate &&
+        phrase.subject.length > 0
       ) {
         let firstperson =
-          !!sentence.subject[0].firstperson && sentence.subject.length === 1;
+          !!phrase.subject[0].firstperson && phrase.subject.length === 1;
         let secondperson =
-          !!sentence.subject[0].secondperson && sentence.subject.length === 1;
-        let plural = sentence.subject.length > 1;
+          !!phrase.subject[0].secondperson && phrase.subject.length === 1;
+        let plural = phrase.subject.length > 1;
         let subjectFormed = plural
-          ? sentence.subject.map(e => e.pluralSubjectForm || e.value)
-          : sentence.subject.map(e => e.value);
+          ? phrase.subject.map(e => e.pluralSubjectForm || e.value)
+          : phrase.subject.map(e => e.value);
         return (
           this.andConcatinate(subjectFormed) +
           " " +
-          this.formVerb(sentence.predicate, {
+          this.formVerb(phrase.predicate, {
             firstperson,
             secondperson,
             plural
