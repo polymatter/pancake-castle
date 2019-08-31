@@ -13,6 +13,7 @@
       v-on:predicateUpdate="predicateUpdated"
     />
     {{ selectedSentence }}
+    <hr/>
     {{ makeSentence }}
   </div>
 </template>
