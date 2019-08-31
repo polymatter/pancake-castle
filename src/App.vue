@@ -1,20 +1,19 @@
 <template>
   <div id="app">
     <Argument
-      v-bind:argument="selectedSentence.subject"
+      v-bind:argument="selectedPhrase.subject"
       v-bind:isSubject="true"
-      v-bind:allElements="allElements"
+      v-bind:allNouns="allNouns"
       v-on:argumentUpdate="subjectUpdated"
     />
     <Predicate
-      v-bind:predicate="selectedSentence.predicate"
-      v-bind:conjugateVerb="conjugateVerb"
+      v-bind:predicate="selectedPhrase.predicate"
       v-bind:allVerbs="allVerbs"
       v-on:predicateUpdate="predicateUpdated"
     />
-    {{ selectedSentence }}
+    {{ selectedPhrase }}
     <hr />
-    {{ makeSentence }}
+    {{ formPhrase }}
   </div>
 </template>
 
@@ -26,7 +25,7 @@ export default {
   name: "app",
   data: function() {
     return {
-      allElements: [
+      allNouns: [
         { key: "I", value: "I", firstperson: true, pluralSubjectForm: "Me" },
         { key: "You", value: "You", secondperson: true },
         { key: "Jeffrey", value: "Jeffrey" },
@@ -43,12 +42,12 @@ export default {
         },
         { key: "dance1", infinitive: "to dance", regular: true }
       ],
-      selectedSentenceIndex: 0,
-      sentences: [{ subject: [], predicate: {} }]
+      phraseIndex: 0,
+      phrases: [{ subject: [], predicate: {} }]
     };
   },
   methods: {
-    conjugateVerb: function(verb, context) {
+    formVerb: function(verb, context) {
       let conjugatedVerb;
       if (verb.regular) {
         let base = verb.infinitive.replace("to ", "");
@@ -71,15 +70,15 @@ export default {
         : lastValue;
     },
     predicateUpdated: function(predicate) {
-      this.selectedSentence.predicate = predicate;
+      this.selectedPhrase.predicate = predicate;
     },
     subjectUpdated: function(subject) {
-      this.selectedSentence.subject = subject;
+      this.selectedPhrase.subject = subject;
     }
   },
   computed: {
-    makeSentence: function() {
-      let sentence = this.selectedSentence;
+    formPhrase: function() {
+      let sentence = this.selectedPhrase;
       if (
         sentence.subject &&
         sentence.predicate &&
@@ -96,7 +95,7 @@ export default {
         return (
           this.andConcatinate(subjectFormed) +
           " " +
-          this.conjugateVerb(sentence.predicate, {
+          this.formVerb(sentence.predicate, {
             firstperson,
             secondperson,
             plural
@@ -106,8 +105,8 @@ export default {
         return "---";
       }
     },
-    selectedSentence: function() {
-      return this.sentences[this.selectedSentenceIndex];
+    selectedPhrase: function() {
+      return this.phrases[this.phraseIndex];
     }
   },
   components: {

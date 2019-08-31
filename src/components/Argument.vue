@@ -3,12 +3,12 @@
   <div class="argument">
     <h1 v-if="isSubject">Subject</h1>
     <h1 v-if="!isSubject">Argument</h1>
-    <select v-model="elements" v-on:change="argumentUpdate" multiple>
+    <select v-model="nouns" v-on:change="argumentUpdate" multiple>
       <option
-        v-for="element in allElements"
-        v-bind:key="element.key"
-        v-bind:value="element"
-      >{{element.value}}</option>
+        v-for="noun in allNouns"
+        v-bind:key="noun.key"
+        v-bind:value="noun"
+      >{{noun.value}}</option>
     </select>
   </div>
 </template>
@@ -17,17 +17,17 @@
 export default {
   name: "Argument",
   props: {
-    allElements: Array,
+    allNouns: Array,
     isSubject: Boolean
   },
   data: function() {
     return {
-      elements: []
+      nouns: []
     };
   },
   methods: {
     argumentUpdate: function() {
-      this.$emit("argumentUpdate", this.elements);
+      this.$emit("argumentUpdate", this.nouns);
     }
   }
 };

@@ -14,8 +14,7 @@
 export default {
   name: "Predicate",
   props: {
-    allVerbs: Array,
-    conjugateVerb: Function
+    allVerbs: Array
   },
   data: function() {
     return {
