@@ -35,7 +35,7 @@ export default {
       allVerbs: [
         { infinitive: "to eat", regular: true },
         { infinitive: "to sing", regular: true },
-        { infinitive: "to wash", regular: true },
+        { infinitive: "to wash", regular: true, endsWithSibilant:true },
         { infinitive: "to dance", regular: true }
       ],
       selectedSentenceIndex: 0,
@@ -47,7 +47,7 @@ export default {
       let conjugatedVerb;
       if (verb.regular) {
         let base = verb.infinitive.replace("to ", "");
-        let suffix = context.firstperson || context.secondperson || context.plural ? "" : "s";
+        let suffix = context.firstperson || context.secondperson || context.plural ? "" : (verb.endsWithSibilant ? "es" : "s");
         conjugatedVerb = base + suffix;
       } else {
         conjugatedVerb = "CAN NOT CONJUGATE!!";
