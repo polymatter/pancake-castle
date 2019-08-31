@@ -47,7 +47,7 @@ export default {
       let conjugatedVerb;
       if (verb.regular) {
         let base = verb.infinitive.replace("to ", "");
-        let suffix = context.firstperson || context.plural ? "" : "s";
+        let suffix = context.firstperson || context.secondperson || context.plural ? "" : "s";
         conjugatedVerb = base + suffix;
       } else {
         conjugatedVerb = "CAN NOT CONJUGATE!!";
@@ -64,17 +64,15 @@ export default {
   computed: {
     makeSentence: function() {
       let sentence = this.selectedSentence;
-      if (sentence.subject && sentence.predicate) {
-        let firstperson = !!sentence.predicate.firstperson;
+      if (sentence.subject && sentence.predicate && sentence.subject.length > 0) {
+        let firstperson = !!sentence.subject[0].firstperson && sentence.subject.length === 1;
+        let secondperson = !!sentence.subject[0].secondperson && sentence.subject.length === 1;
         let plural = sentence.subject.length > 1;
         let _subjects = sentence.subject;
-        // if (plural) {
-        //   _subjects = sentence.subject.map(s => s.replace(/^I$/, "Me"));
-        // }
         return (
-          _subjects.join(" and ") +
+          _subjects.map(s => plural ? s.pluralSubjectForm || s.value : s.value).join(" and ") +
           " " +
-          this.conjugateVerb(sentence.predicate, { firstperson, plural })
+          this.conjugateVerb(sentence.predicate, { firstperson, secondperson, plural })
         );
       } else {
         return '---';
