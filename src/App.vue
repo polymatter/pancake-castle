@@ -20,17 +20,13 @@
 <script>
 import Argument from "./components/Argument.vue";
 import Predicate from "./components/Predicate.vue";
+import Nouns from "./assets/nouns.json";
 
 export default {
   name: "app",
   data: function() {
     return {
-      allNouns: [
-        { key: "I", value: "I", firstperson: true, pluralSubjectForm: "Me" },
-        { key: "You", value: "You", secondperson: true },
-        { key: "Jeffrey", value: "Jeffrey" },
-        { key: "Trish", value: "Trish" }
-      ],
+      allNouns: Nouns,
       allVerbs: [
         { key: "eat1", infinitive: "to eat", regular: true },
         { key: "sing1", infinitive: "to sing", regular: true },
