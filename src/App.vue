@@ -63,6 +63,13 @@ export default {
       }
       return conjugatedVerb;
     },
+    formSubject: function(subject, context) {
+      return this.andConcatinate(
+        context.plural
+          ? subject.map(e => e.pluralSubjectForm || e.value)
+          : subject.map(e => e.value)
+      );
+    },
     andConcatinate: function(values) {
       let lastValue = values.pop();
       return values.length > 0
@@ -79,24 +86,17 @@ export default {
   computed: {
     formPhrase: function() {
       let result = "---";
+      let phrase = this.selectedPhrase;
       if (phrase.subject && phrase.predicate && phrase.subject.length > 0) {
-        let phrase = this.selectedPhrase;
         let firstperson =
           !!phrase.subject[0].firstperson && phrase.subject.length === 1;
         let secondperson =
           !!phrase.subject[0].secondperson && phrase.subject.length === 1;
         let plural = phrase.subject.length > 1;
-        let subjectFormed = plural
-          ? phrase.subject.map(e => e.pluralSubjectForm || e.value)
-          : phrase.subject.map(e => e.value);
-        result =
-          this.andConcatinate(subjectFormed) +
-          " " +
-          this.formVerb(phrase.predicate, {
-            firstperson,
-            secondperson,
-            plural
-          });
+        let context = { plural, firstperson, secondperson };
+        let subjectFormed = this.formSubject(phrase.subject, context);
+        let predicateFormed = this.formVerb(phrase.predicate, context);
+        result = subjectFormed + " " + predicateFormed;
       }
       return result;
     },
