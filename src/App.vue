@@ -21,23 +21,14 @@
 import Argument from "./components/Argument.vue";
 import Predicate from "./components/Predicate.vue";
 import Nouns from "./assets/nouns.json";
+import Verbs from "./assets/verbs.json";
 
 export default {
   name: "app",
   data: function() {
     return {
       allNouns: Nouns,
-      allVerbs: [
-        { key: "eat1", infinitive: "to eat", regular: true },
-        { key: "sing1", infinitive: "to sing", regular: true },
-        {
-          key: "wash1",
-          infinitive: "to wash",
-          regular: true,
-          endsWithSibilant: true
-        },
-        { key: "dance1", infinitive: "to dance", regular: true }
-      ],
+      allVerbs: Verbs,
       phraseIndex: 0,
       phrases: [{ subject: [], predicate: {} }]
     };

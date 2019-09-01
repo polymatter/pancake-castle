@@ -1,0 +1,23 @@
+[
+  {
+    "key": "eat1",
+    "infinitive": "to eat",
+    "regular": true
+  },
+  {
+    "key": "sing1",
+    "infinitive": "to sing",
+    "regular": true
+  },
+  {
+    "key": "wash1",
+    "infinitive": "to wash",
+    "regular": true,
+    "endsWithSibilant": true
+  },
+  {
+    "key": "dance1",
+    "infinitive": "to dance",
+    "regular": true
+  }
+]
