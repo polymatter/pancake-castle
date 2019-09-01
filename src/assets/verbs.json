@@ -27,7 +27,7 @@
     "presentTense": {
       "simple": {
         "firstPerson": "am",
-        "secondperson": "are",
+        "secondPerson": "are",
         "thirdperson": {
           "singular": "is",
           "plural": "are"
