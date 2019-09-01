@@ -46,7 +46,14 @@ export default {
             : "s";
         conjugatedVerb = base + suffix;
       } else {
-        conjugatedVerb = "---";
+        let tense = verb.presentTense.simple;
+        conjugatedVerb = context.firstperson
+          ? tense.firstperson
+          : context.secondperson
+          ? tense.secondperson
+          : context.plural
+          ? tense.thirdperson.plural
+          : tense.thirdperson.singular;
       }
       return conjugatedVerb;
     },
@@ -74,7 +81,12 @@ export default {
     formPhrase: function() {
       let result = "---";
       let phrase = this.selectedPhrase;
-      if (phrase.subject && phrase.predicate && phrase.subject.length > 0) {
+      if (
+        phrase.subject &&
+        phrase.predicate &&
+        phrase.subject.length > 0 &&
+        Object.keys(phrase.predicate).length > 0
+      ) {
         let firstperson =
           !!phrase.subject[0].firstperson && phrase.subject.length === 1;
         let secondperson =

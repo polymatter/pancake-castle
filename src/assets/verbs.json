@@ -19,5 +19,20 @@
     "key": "dance1",
     "infinitive": "to dance",
     "regular": true
+  },
+  {
+    "key": "tobe1",
+    "infinitive": "to be",
+    "regular": false,
+    "presentTense": {
+      "simple": {
+        "firstperson": "am",
+        "secondperson": "are",
+        "thirdperson": {
+          "singular": "is",
+          "plural": "are"
+        }
+      }
+    }
   }
 ]
