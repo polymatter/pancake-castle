@@ -94,7 +94,7 @@ export default {
         let plural = phrase.subject.length > 1;
         let context = { plural, firstPerson, secondPerson };
         let subjectFormed = this.formSubject(phrase.subject, context);
-        let predicateFormed = this.formVerb(phrase.predicate, context);
+        let predicateFormed = this.formVerb(phrase.predicate.verb, context);
         result = subjectFormed + " " + predicateFormed;
       }
       return result;

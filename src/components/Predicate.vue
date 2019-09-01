@@ -21,9 +21,14 @@ export default {
       verb: undefined
     };
   },
+  methods: {
+    updatePredicate: function() {
+      this.$emit("predicateUpdate", {verb: this.verb});
+    }
+  },
   watch: {
-    verb: function(newVerb) {
-      this.$emit("predicateUpdate", newVerb);
+    verb: function() {
+      this.updatePredicate();
     }
   }
 };
