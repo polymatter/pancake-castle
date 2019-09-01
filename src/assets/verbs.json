@@ -28,7 +28,7 @@
       "simple": {
         "firstPerson": "am",
         "secondPerson": "are",
-        "thirdperson": {
+        "thirdPerson": {
           "singular": "is",
           "plural": "are"
         }

@@ -52,8 +52,8 @@ export default {
           : context.secondPerson
           ? tense.secondPerson
           : context.plural
-          ? tense.thirdperson.plural
-          : tense.thirdperson.singular;
+          ? tense.thirdPerson.plural
+          : tense.thirdPerson.singular;
       }
       return conjugatedVerb;
     },
