@@ -23,7 +23,12 @@ export default {
   },
   methods: {
     updatePredicate: function() {
-      this.$emit("predicateUpdate", {verb: this.verb});
+      this.$emit("predicateUpdate", toJSON);
+    }
+  },
+  computed: {
+    toJSON: function() {
+      return { verb: this.verb, objects: this.objects }
     }
   },
   watch: {
