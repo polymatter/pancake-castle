@@ -39,7 +39,7 @@ export default {
       if (verb.regular) {
         let base = verb.infinitive.replace("to ", "");
         let suffix =
-          context.firstperson || context.secondperson || context.plural
+          context.firstPerson || context.secondperson || context.plural
             ? ""
             : verb.endsWithSibilant
             ? "es"
@@ -47,8 +47,8 @@ export default {
         conjugatedVerb = base + suffix;
       } else {
         let tense = verb.presentTense.simple;
-        conjugatedVerb = context.firstperson
-          ? tense.firstperson
+        conjugatedVerb = context.firstPerson
+          ? tense.firstPerson
           : context.secondperson
           ? tense.secondperson
           : context.plural
@@ -87,12 +87,12 @@ export default {
         phrase.subject.length > 0 &&
         Object.keys(phrase.predicate).length > 0
       ) {
-        let firstperson =
-          !!phrase.subject[0].firstperson && phrase.subject.length === 1;
+        let firstPerson =
+          !!phrase.subject[0].firstPerson && phrase.subject.length === 1;
         let secondperson =
           !!phrase.subject[0].secondperson && phrase.subject.length === 1;
         let plural = phrase.subject.length > 1;
-        let context = { plural, firstperson, secondperson };
+        let context = { plural, firstPerson, secondperson };
         let subjectFormed = this.formSubject(phrase.subject, context);
         let predicateFormed = this.formVerb(phrase.predicate, context);
         result = subjectFormed + " " + predicateFormed;
