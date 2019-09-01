@@ -23,7 +23,7 @@ export default {
   },
   methods: {
     updatePredicate: function() {
-      this.$emit("predicateUpdate", toJSON);
+      this.$emit("predicateUpdate", this.toJSON);
     }
   },
   computed: {
