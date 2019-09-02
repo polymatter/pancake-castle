@@ -40,7 +40,6 @@ export default {
     },
     updateObject: function(objects) {
       this.objects = objects;
-      this.$emit("predicateUpdate", {verb: this.verb, objects: this.objects })
     }
   },
   computed: {
@@ -50,6 +49,9 @@ export default {
   },
   watch: {
     verb: function() {
+      this.updatePredicate();
+    },
+    objects: function() {
       this.updatePredicate();
     }
   },
