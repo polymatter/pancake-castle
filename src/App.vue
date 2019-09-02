@@ -9,6 +9,7 @@
     <Predicate
       v-bind:predicate="selectedPhrase.predicate"
       v-bind:allVerbs="allVerbs"
+      v-bind:allObjects="allNouns"
       v-on:predicateUpdate="predicateUpdated"
     />
     {{ selectedPhrase }}

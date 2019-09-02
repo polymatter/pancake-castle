@@ -6,24 +6,41 @@
     <select v-model="verb">
       <option v-for="verb in allVerbs" v-bind:key="verb.key" v-bind:value="verb">{{verb.infinitive}}</option>
     </select>
+    <br />
+    <div class="objects">
+    <Argument
+      v-bind:argument="objects"
+      v-bind:isSubject="false"
+      v-bind:allNouns="allObjects"
+      v-on:argumentUpdate="updateObject"
+      />
+    </div>
     <hr />
   </div>
 </template>
 
 <script>
+import Argument from "./Argument.vue";
+
 export default {
   name: "Predicate",
   props: {
-    allVerbs: Array
+    allVerbs: Array,
+    allObjects: Array
   },
   data: function() {
     return {
+      objects: undefined,
       verb: undefined
     };
   },
   methods: {
     updatePredicate: function() {
-      this.$emit("predicateUpdate", this.toJSON);
+      this.$emit("predicateUpdate", {verb: this.verb, objects: this.objects });
+    },
+    updateObject: function(objects) {
+      this.objects = objects;
+      this.$emit("predicateUpdate", {verb: this.verb, objects: this.objects })
     }
   },
   computed: {
@@ -35,6 +52,9 @@ export default {
     verb: function() {
       this.updatePredicate();
     }
+  },
+  components: {
+    Argument
   }
 };
 </script>
