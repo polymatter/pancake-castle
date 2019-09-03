@@ -1,8 +1,8 @@
 <!-- Represents Editing a specific Predicate Argument -->
 <template>
   <div class="argument">
-    <h1 v-if="isSubject">Subject</h1>
-    <h1 v-if="!isSubject">Argument</h1>
+    <h1 v-if="type">{{type}}</h1>
+    <h1 v-if="!type">Argument</h1>
     <select v-model="nouns" v-on:change="argumentUpdate" multiple>
       <option v-for="noun in allNouns" v-bind:key="noun.key" v-bind:value="noun">{{noun.value}}</option>
     </select>
@@ -14,7 +14,7 @@ export default {
   name: "Argument",
   props: {
     allNouns: Array,
-    isSubject: Boolean
+    type: String
   },
   data: function() {
     return {

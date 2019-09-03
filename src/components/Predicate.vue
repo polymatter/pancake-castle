@@ -10,7 +10,7 @@
     <div class="objects">
     <Argument
       v-bind:argument="objects"
-      v-bind:isSubject="false"
+      v-bind:type="'Object'"
       v-bind:allNouns="allObjects"
       v-on:argumentUpdate="updateObject"
       />
