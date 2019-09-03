@@ -7,12 +7,12 @@
       <option v-for="verb in allVerbs" v-bind:key="verb.key" v-bind:value="verb">{{verb.infinitive}}</option>
     </select>
     <br />
-    <div class="objects">
-    <Argument
-      v-bind:argument="objects"
-      v-bind:type="'Object'"
-      v-bind:allNouns="allObjects"
-      v-on:argumentUpdate="updateObject"
+    <div class="objects" v-if="verb">
+      <Argument
+        v-bind:argument="objects"
+        v-bind:type="'Object'"
+        v-bind:allNouns="validObjects"
+        v-on:argumentUpdate="updateObject"
       />
     </div>
     <hr />
@@ -44,7 +44,20 @@ export default {
   },
   computed: {
     toJSON: function() {
-      return { verb: this.verb, objects: this.objects }
+      return { verb: this.verb, objects: this.objects };
+    },
+    validObjects: function() {
+      let result = this.allObjects;
+      if (this.verb && this.verb.directObject) {
+        result = result.filter(noun =>
+          this.verb.directObject.required.reduce(
+            (result, requiredCategory) =>
+              result || noun.categories.indexOf(requiredCategory) > -1,
+            false
+          )
+        );
+      }
+      return result;
     }
   },
   watch: {

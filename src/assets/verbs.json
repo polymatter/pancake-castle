@@ -5,6 +5,16 @@
     "regular": true
   },
   {
+    "key": "eat2",
+    "infinitive": "to eat2",
+    "pattern": "to eat (food/meal)",
+    "regular": true,
+    "directObject": {
+      "prompt": "Food",
+      "required": ["food","meal"]
+    }
+  },
+  {
     "key": "sing1",
     "infinitive": "to sing",
     "regular": true

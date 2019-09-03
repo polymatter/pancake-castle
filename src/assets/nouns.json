@@ -3,23 +3,48 @@
     "key": "I",
     "value": "I",
     "firstPerson": true,
-    "pluralSubjectForm": "Me"
+    "pluralSubjectForm": "Me",
+    "categories": ["proper"]
   },
   {
     "key": "You",
     "value": "You",
-    "secondPerson": true
+    "secondPerson": true,
+    "categories": ["proper"]
   },
   {
     "key": "Jeffrey",
-    "value": "Jeffrey"
+    "value": "Jeffrey",
+    "categories": ["proper","person"]
   },
   {
     "key": "Trish",
-    "value": "Trish"
+    "value": "Trish",
+    "categories": ["proper","person"]
   },
   {
     "key": "Banana Tree",
-    "value": "Banana Tree"
+    "value": "Banana Tree",
+    "categories": ["common","plant"]
+  },
+  {
+    "key": "Banana",
+    "value": "Banana",
+    "categories": ["common","food"]
+  },
+  {
+    "key": "Apple",
+    "value": "Apple",
+    "categories": ["common","food"]
+  },
+  {
+    "key": "Pho",
+    "value": "Pho",
+    "categories": ["common","food","prepared"]
+  },
+  {
+    "key": "Lunch",
+    "value": "Lunch",
+    "categories": ["abstract","meal"]
   }
 ]
