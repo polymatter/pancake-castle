@@ -11,7 +11,7 @@
       <Argument
         v-bind:argument="objects"
         v-bind:type="'Object'"
-        v-bind:allNouns="validObjects"
+        v-bind:allNouns="validObjects('directObject')"
         v-on:argumentUpdate="updateObject"
       />
     </div>
@@ -40,17 +40,12 @@ export default {
     },
     updateObject: function(objects) {
       this.objects = objects;
-    }
-  },
-  computed: {
-    toJSON: function() {
-      return { verb: this.verb, objects: this.objects };
     },
-    validObjects: function() {
+    validObjects: function(type) {
       let result = [];
       if (this.verb && this.verb.directObject) {
         result = this.allObjects.filter(noun =>
-          this.verb.directObject.required.reduce(
+          this.verb[type].required.reduce(
             (result, requiredCategory) =>
               result || noun.categories.indexOf(requiredCategory) > -1,
             false
@@ -60,6 +55,11 @@ export default {
         result = this.allObjects;
       }
       return result;
+    }
+  },
+  computed: {
+    toJSON: function() {
+      return { verb: this.verb, objects: this.objects };
     }
   },
   watch: {
