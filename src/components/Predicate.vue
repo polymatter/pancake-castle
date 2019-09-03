@@ -47,15 +47,17 @@ export default {
       return { verb: this.verb, objects: this.objects };
     },
     validObjects: function() {
-      let result = this.allObjects;
+      let result = [];
       if (this.verb && this.verb.directObject) {
-        result = result.filter(noun =>
+        result = this.allObjects.filter(noun =>
           this.verb.directObject.required.reduce(
             (result, requiredCategory) =>
               result || noun.categories.indexOf(requiredCategory) > -1,
             false
           )
         );
+      } else {
+        result = this.allObjects;
       }
       return result;
     }
