@@ -87,7 +87,7 @@ export default {
         phrase.predicate &&
         phrase.subject.nouns &&
         phrase.subject.nouns.length > 0 &&
-        Object.keys(phrase.predicate).length > 0
+        phrase.predicate.verb
       ) {
         let firstPerson =
           !!phrase.subject.nouns[0].firstPerson &&
