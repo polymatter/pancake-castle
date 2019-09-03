@@ -36,7 +36,7 @@ export default {
   },
   methods: {
     updatePredicate: function() {
-      this.$emit("predicateUpdate", {verb: this.verb, objects: this.objects });
+      this.$emit("predicateUpdate", { verb: this.verb, objects: this.objects });
     },
     updateObject: function(objects) {
       this.objects = objects;
