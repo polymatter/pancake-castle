@@ -85,13 +85,16 @@ export default {
       if (
         phrase.subject &&
         phrase.predicate &&
-        phrase.subject.nouns && phrase.subject.nouns.length > 0 &&
+        phrase.subject.nouns &&
+        phrase.subject.nouns.length > 0 &&
         Object.keys(phrase.predicate).length > 0
       ) {
         let firstPerson =
-          !!phrase.subject.nouns[0].firstPerson && phrase.subject.nouns.length === 1;
+          !!phrase.subject.nouns[0].firstPerson &&
+          phrase.subject.nouns.length === 1;
         let secondPerson =
-          !!phrase.subject.nouns[0].secondPerson && phrase.subject.nouns.length === 1;
+          !!phrase.subject.nouns[0].secondPerson &&
+          phrase.subject.nouns.length === 1;
         let plural = phrase.subject.length > 1;
         let context = { plural, firstPerson, secondPerson };
         let subjectFormed = this.formSubject(phrase.subject, context);
