@@ -23,7 +23,7 @@ export default {
   },
   methods: {
     argumentUpdate: function() {
-      this.$emit("argumentUpdate", this.nouns);
+      this.$emit("argumentUpdate", { nouns: this.nouns });
     }
   }
 };
