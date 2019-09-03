@@ -31,8 +31,8 @@ export default {
   },
   data: function() {
     return {
-      objects: undefined,
-      verb: undefined
+      objects: [],
+      verb: {}
     };
   },
   methods: {
