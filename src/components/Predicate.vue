@@ -9,6 +9,7 @@
     <br />
     <div class="objects" v-if="verb">
       <Argument
+        v-if="verb && verb.directObject"
         v-bind:argument="objects"
         v-bind:type="'Object'"
         v-bind:allNouns="validObjects('directObject')"
@@ -51,8 +52,6 @@ export default {
             false
           )
         );
-      } else {
-        result = this.allObjects;
       }
       return result;
     }
