@@ -65,6 +65,13 @@ export default {
           : subject.nouns.map(e => e.value)
       );
     },
+    formObject: function(object, context) {
+      return this.andConcatinate(
+        context.plural
+          ? object.nouns.map(e => e.objectForm || e.value)
+          : object.nouns.map(e => e.value)
+      );
+    },
     andConcatinate: function(values) {
       let lastValue = values.pop();
       return values.length > 0
@@ -87,7 +94,9 @@ export default {
         phrase.predicate &&
         phrase.subject.nouns &&
         phrase.subject.nouns.length > 0 &&
-        phrase.predicate.verb
+        phrase.predicate.verb &&
+        (!phrase.predicate.directObject ||
+          phrase.predicate.objects.nouns.length > 0)
       ) {
         let firstPerson =
           !!phrase.subject.nouns[0].firstPerson &&
@@ -99,7 +108,18 @@ export default {
         let context = { plural, firstPerson, secondPerson };
         let subjectFormed = this.formSubject(phrase.subject, context);
         let predicateFormed = this.formVerb(phrase.predicate.verb, context);
-        result = subjectFormed + " " + predicateFormed;
+        let objectFormed;
+        if (
+          phrase.predicate.verb.directObject &&
+          phrase.predicate.objects.nouns
+        ) {
+          objectFormed = this.formObject(phrase.predicate.objects, context);
+        }
+        result =
+          subjectFormed +
+          " " +
+          predicateFormed +
+          (objectFormed ? " " + objectFormed : "");
       }
       return result;
     },
