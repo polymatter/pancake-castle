@@ -35,7 +35,8 @@ export default {
     };
   },
   methods: {
-    formVerb: function(verb, context) {
+    formVerb: function(verb) {
+      let context = this.formContext;
       let conjugatedVerb;
       if (verb.regular) {
         let base = verb.infinitive.replace("to ", "");
@@ -58,16 +59,16 @@ export default {
       }
       return conjugatedVerb;
     },
-    formSubject: function(subject, context) {
+    formSubject: function(subject) {
       return this.andConcatinate(
-        context.plural
+        this.formContext.plural
           ? subject.nouns.map(e => e.pluralSubjectForm || e.value)
           : subject.nouns.map(e => e.value)
       );
     },
-    formObject: function(object, context) {
+    formObject: function(object) {
       return this.andConcatinate(
-        context.plural
+        this.formContext.plural
           ? object.nouns.map(e => e.objectForm || e.value)
           : object.nouns.map(e => e.value)
       );
@@ -86,6 +87,18 @@ export default {
     }
   },
   computed: {
+    formContext: function() {
+      let phrase = this.selectedPhrase;
+      let firstPerson =
+        !!phrase.subject.nouns[0].firstPerson &&
+        phrase.subject.nouns.length === 1;
+      let secondPerson =
+        !!phrase.subject.nouns[0].secondPerson &&
+        phrase.subject.nouns.length === 1;
+      let plural = phrase.subject.length > 1;
+      let context = { plural, firstPerson, secondPerson };
+      return context;
+    },
     formPhrase: function() {
       let result = "---";
       let phrase = this.selectedPhrase;
@@ -98,22 +111,14 @@ export default {
         (!phrase.predicate.directObject ||
           phrase.predicate.objects.nouns.length > 0)
       ) {
-        let firstPerson =
-          !!phrase.subject.nouns[0].firstPerson &&
-          phrase.subject.nouns.length === 1;
-        let secondPerson =
-          !!phrase.subject.nouns[0].secondPerson &&
-          phrase.subject.nouns.length === 1;
-        let plural = phrase.subject.length > 1;
-        let context = { plural, firstPerson, secondPerson };
-        let subjectFormed = this.formSubject(phrase.subject, context);
-        let predicateFormed = this.formVerb(phrase.predicate.verb, context);
+        let subjectFormed = this.formSubject(phrase.subject);
+        let predicateFormed = this.formVerb(phrase.predicate.verb);
         let objectFormed;
         if (
           phrase.predicate.verb.directObject &&
           phrase.predicate.objects.nouns
         ) {
-          objectFormed = this.formObject(phrase.predicate.objects, context);
+          objectFormed = this.formObject(phrase.predicate.objects);
         }
         result =
           subjectFormed +
