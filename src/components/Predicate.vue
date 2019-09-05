@@ -2,9 +2,9 @@
 <template>
   <span class="predicate">
     <!-- <h1>Predicate</h1> -->
-    <span class="verb">
-      Verb
-      <select v-model="verb">
+    <span class="verb" v-on:click="toggleMode">
+      {{ verb.shortDescription || 'Verb' }}
+      <select v-model="verb" v-on:click.stop="" v-if="mode === 'edit'">
         <option
           v-for="verb in allVerbs"
           v-bind:key="verb.key"
@@ -37,7 +37,8 @@ export default {
   data: function() {
     return {
       objects: [],
-      verb: {}
+      verb: {},
+      mode: "view"
     };
   },
   methods: {
@@ -59,6 +60,9 @@ export default {
         );
       }
       return result;
+    },
+    toggleMode: function() {
+      this.mode = this.mode === "view" ? "edit" : "view";
     }
   },
   computed: {
@@ -69,6 +73,7 @@ export default {
   watch: {
     verb: function() {
       this.updatePredicate();
+      this.toggleMode();
     },
     objects: function() {
       this.updatePredicate();
