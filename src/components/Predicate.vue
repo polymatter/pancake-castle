@@ -3,7 +3,7 @@
   <span class="predicate">
     <span class="verb" v-on:click="toggleMode">
       <slot v-if="mode === 'view'"></slot>
-      <select v-model="verb" v-on:click.stop="" v-if="mode === 'edit'">
+      <select v-model="verb" v-on:click.stop v-if="mode === 'edit'">
         <option
           v-for="verb in allVerbs"
           v-bind:key="verb.key"
@@ -18,7 +18,9 @@
         v-bind:type="'Object'"
         v-bind:allNouns="validObjects('directObject')"
         v-on:argumentUpdate="updateObject"
-      ><slot name="directObject"></slot></Argument>
+      >
+        <slot name="directObject"></slot>
+      </Argument>
     </span>
     <hr />
   </span>
