@@ -6,8 +6,8 @@
       <select v-model="nouns" v-on:click.stop v-on:change="argumentUpdate" multiple>
         <option v-for="noun in allNouns" v-bind:key="noun.key" v-bind:value="noun">{{noun.value}}</option>
       </select>
-      <button v-on:click.stop="toggleMode">/</button>
-      <button v-on:click.stop="toggleMode">X</button>
+      <button class="confirm" v-on:click.stop="toggleMode">✓</button>
+      <button class="cancel" v-on:click.stop="toggleMode">X</button>
     </template>
   </span>
 </template>
