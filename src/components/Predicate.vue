@@ -3,7 +3,7 @@
   <span class="predicate">
     <!-- <h1>Predicate</h1> -->
     <span class="verb" v-on:click="toggleMode">
-      {{ verb.shortDescription || 'Verb' }}
+      <template v-if="mode === 'view'">{{ verb.shortDescription || 'Verb' }}</template>
       <select v-model="verb" v-on:click.stop="" v-if="mode === 'edit'">
         <option
           v-for="verb in allVerbs"
