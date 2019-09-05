@@ -4,7 +4,11 @@
     <h1>Predicate</h1>
     <h2>Verb</h2>
     <select v-model="verb">
-      <option v-for="verb in allVerbs" v-bind:key="verb.key" v-bind:value="verb">{{verb.infinitive}}</option>
+      <option
+        v-for="verb in allVerbs"
+        v-bind:key="verb.key"
+        v-bind:value="verb"
+      >{{verb.shortDescription || verb.key}}</option>
     </select>
     <br />
     <div class="objects" v-if="verb">

@@ -1,12 +1,12 @@
 [
   {
     "key": "eat1",
-    "infinitive": "to eat",
+    "shortDescription": "to eat",
     "regular": true
   },
   {
     "key": "eat2",
-    "infinitive": "to eat (food)",
+    "shortDescription": "to eat (food)",
     "pattern": "to eat (food)",
     "regular": true,
     "directObject": {
@@ -16,7 +16,7 @@
   },
   {
     "key": "eat3",
-    "infinitive": "to eat (meal)",
+    "shortDescription": "to eat (meal)",
     "pattern": "to eat (meal)",
     "regular": true,
     "directObject": {
@@ -26,23 +26,23 @@
   },
   {
     "key": "sing1",
-    "infinitive": "to sing",
+    "shortDescription": "to sing",
     "regular": true
   },
   {
     "key": "wash1",
-    "infinitive": "to wash",
+    "shortDescription": "to wash",
     "regular": true,
     "endsWithSibilant": true
   },
   {
     "key": "dance1",
-    "infinitive": "to dance",
+    "shortDescription": "to dance",
     "regular": true
   },
   {
     "key": "tobe1",
-    "infinitive": "to be",
+    "shortDescription": "to be",
     "regular": false,
     "presentTense": {
       "simple": {

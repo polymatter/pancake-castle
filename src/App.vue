@@ -39,7 +39,7 @@ export default {
       let context = this.formContext;
       let conjugatedVerb;
       if (verb.regular) {
-        let base = verb.infinitive.replace("to ", "");
+        let base = verb.shortDescription.replace("to ", "");
         let suffix =
           context.firstPerson || context.secondPerson || context.plural
             ? ""
