@@ -1,17 +1,18 @@
 <!-- Represents Editing a specific Predicate -->
 <template>
-  <div class="predicate">
-    <h1>Predicate</h1>
-    <h2>Verb</h2>
-    <select v-model="verb">
-      <option
-        v-for="verb in allVerbs"
-        v-bind:key="verb.key"
-        v-bind:value="verb"
-      >{{verb.shortDescription || verb.key}}</option>
-    </select>
-    <br />
-    <div class="objects" v-if="verb">
+  <span class="predicate">
+    <!-- <h1>Predicate</h1> -->
+    <span class="verb">
+      Verb
+      <select v-model="verb">
+        <option
+          v-for="verb in allVerbs"
+          v-bind:key="verb.key"
+          v-bind:value="verb"
+        >{{verb.shortDescription || verb.key}}</option>
+      </select>
+    </span>
+    <span class="objects" v-if="verb">
       <Argument
         v-if="verb && verb.directObject"
         v-bind:argument="objects"
@@ -19,9 +20,9 @@
         v-bind:allNouns="validObjects('directObject')"
         v-on:argumentUpdate="updateObject"
       />
-    </div>
+    </span>
     <hr />
-  </div>
+  </span>
 </template>
 
 <script>
@@ -81,18 +82,8 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
+.verb {
+  border-color: #42b983;
+  border-style: dotted;
 }
 </style>
