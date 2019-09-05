@@ -1,7 +1,7 @@
 <!-- Represents Editing a specific Predicate Argument -->
 <template>
   <span class="argument" v-on:click="toggleMode">
-    <template v-if="mode === 'view'">{{nouns.length > 0 ? nouns.map(n => n.value) : type || 'Argument'}}</template>
+    <slot v-if="mode === 'view'"></slot>
     <template v-if="mode === 'edit'">
       <select v-model="nouns" v-on:click.stop v-on:change="argumentUpdate" multiple>
         <option v-for="noun in allNouns" v-bind:key="noun.key" v-bind:value="noun">{{noun.value}}</option>

@@ -5,7 +5,7 @@
       v-bind:type="'Subject'"
       v-bind:allNouns="allNouns"
       v-on:argumentUpdate="subjectUpdated"
-    />
+    >{{ selectedPhrase.subject.nouns ? formSubject(selectedPhrase.subject) : "Subject" }}</Argument>
     <Predicate
       v-bind:predicate="selectedPhrase.predicate"
       v-bind:allVerbs="allVerbs"
