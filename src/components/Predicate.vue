@@ -18,7 +18,7 @@
         v-bind:type="'Object'"
         v-bind:allNouns="validObjects('directObject')"
         v-on:argumentUpdate="updateObject"
-      >Object</Argument>
+      ><slot name="directObject"></slot></Argument>
     </span>
     <hr />
   </span>

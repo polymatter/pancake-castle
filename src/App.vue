@@ -11,7 +11,9 @@
       v-bind:allVerbs="allVerbs"
       v-bind:allObjects="allNouns"
       v-on:predicateUpdate="predicateUpdated"
-    >{{ selectedPhrase.predicate.verb ? formVerb(selectedPhrase.predicate.verb) : "Verb" }}</Predicate>
+    >{{ selectedPhrase.predicate.verb ? formVerb(selectedPhrase.predicate.verb) : "Verb" }}
+    <template v-slot:directObject>{{ selectedPhrase.predicate.objects ? formObject(selectedPhrase.predicate.objects) : "Object" }}</template>
+    </Predicate>
     {{ selectedPhrase }}
     <hr />
     {{ formPhrase }}
