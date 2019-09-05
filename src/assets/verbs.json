@@ -6,12 +6,22 @@
   },
   {
     "key": "eat2",
-    "infinitive": "to eat2",
-    "pattern": "to eat (food/meal)",
+    "infinitive": "to eat (food)",
+    "pattern": "to eat (food)",
     "regular": true,
     "directObject": {
       "prompt": "Food",
-      "required": ["food","meal"]
+      "required": ["food"]
+    }
+  },
+  {
+    "key": "eat3",
+    "infinitive": "to eat (meal)",
+    "pattern": "to eat (meal)",
+    "regular": true,
+    "directObject": {
+      "prompt": "Meal",
+      "required": ["meal"]
     }
   },
   {
