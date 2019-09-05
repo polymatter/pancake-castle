@@ -43,21 +43,13 @@ export default {
         let base = verb.regularBaseForm;
         tense.firstPerson = base;
         tense.secondPerson = base;
-        tense.thirdPerson = {
-          plural: base + (verb.endsWithSibilant ? "es" : "s"),
-          singular: base + (verb.endsWithSibilant ? "es" : "s")
-        }
+        tense.thirdPerson = base + (verb.endsWithSibilant ? "es" : "s");
+        tense.thirdPersonPlural = base + (verb.endsWithSibilant ? "es" : "s");
       } else {
         tense = verb.presentTense.simple;
       }
 
-      conjugatedVerb = context.firstPerson
-        ? tense.firstPerson
-        : context.secondPerson
-        ? tense.secondPerson
-        : context.plural
-        ? tense.thirdPerson.plural
-        : tense.thirdPerson.singular;
+      conjugatedVerb = tense[context.verbForm]
       return conjugatedVerb;
     },
     formSubject: function(subject) {
@@ -97,7 +89,14 @@ export default {
         !!phrase.subject.nouns[0].secondPerson &&
         phrase.subject.nouns.length === 1;
       let plural = phrase.subject.nouns.length > 1;
-      let context = { plural, firstPerson, secondPerson };
+      let verbForm = plural
+        ? "thirdPersonPlural"
+        : firstPerson
+        ? "firstPerson"
+        : secondPerson
+        ? "secondPerson"
+        : "thirdPerson";
+      let context = { plural, firstPerson, secondPerson, verbForm };
       return context;
     },
     formPhrase: function() {
