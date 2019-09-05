@@ -46,7 +46,7 @@ export default {
         tense.firstPerson = base;
         tense.secondPerson = base;
         tense.thirdPerson = base + (verb.endsWithSibilant ? "es" : "s");
-        tense.thirdPersonPlural = base + (verb.endsWithSibilant ? "es" : "s");
+        tense.thirdPersonPlural = base;
       } else {
         tense = verb.presentTense.simple;
       }
