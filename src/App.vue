@@ -38,25 +38,26 @@ export default {
     formVerb: function(verb) {
       let context = this.formContext;
       let conjugatedVerb;
-      if (verb.regular) {
-        let base = verb.shortDescription.replace("to ", "");
-        let suffix =
-          context.firstPerson || context.secondPerson || context.plural
-            ? ""
-            : verb.endsWithSibilant
-            ? "es"
-            : "s";
-        conjugatedVerb = base + suffix;
+      let tense = {};
+      if (verb.regularBaseForm) {
+        let base = verb.regularBaseForm;
+        tense.firstPerson = base;
+        tense.secondPerson = base;
+        tense.thirdPerson = {
+          plural: base + (verb.endsWithSibilant ? "es" : "s"),
+          singular: base + (verb.endsWithSibilant ? "es" : "s")
+        }
       } else {
-        let tense = verb.presentTense.simple;
-        conjugatedVerb = context.firstPerson
-          ? tense.firstPerson
-          : context.secondPerson
-          ? tense.secondPerson
-          : context.plural
-          ? tense.thirdPerson.plural
-          : tense.thirdPerson.singular;
+        tense = verb.presentTense.simple;
       }
+
+      conjugatedVerb = context.firstPerson
+        ? tense.firstPerson
+        : context.secondPerson
+        ? tense.secondPerson
+        : context.plural
+        ? tense.thirdPerson.plural
+        : tense.thirdPerson.singular;
       return conjugatedVerb;
     },
     formSubject: function(subject) {

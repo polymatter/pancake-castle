@@ -2,13 +2,13 @@
   {
     "key": "eat1",
     "shortDescription": "to eat",
-    "regular": true
+    "regularBaseForm": "eat"
   },
   {
     "key": "eat2",
     "shortDescription": "to eat (food)",
     "pattern": "to eat (food)",
-    "regular": true,
+    "regularBaseForm": "eat",
     "directObject": {
       "prompt": "Food",
       "required": ["food"]
@@ -18,7 +18,7 @@
     "key": "eat3",
     "shortDescription": "to eat (meal)",
     "pattern": "to eat (meal)",
-    "regular": true,
+    "regularBaseForm": "eat",
     "directObject": {
       "prompt": "Meal",
       "required": ["meal"]
@@ -27,23 +27,22 @@
   {
     "key": "sing1",
     "shortDescription": "to sing",
-    "regular": true
+    "regularBaseForm": "sing"
   },
   {
     "key": "wash1",
     "shortDescription": "to wash",
-    "regular": true,
+    "regularBaseForm": "wash",
     "endsWithSibilant": true
   },
   {
     "key": "dance1",
     "shortDescription": "to dance",
-    "regular": true
+    "regularBaseForm": "dance"
   },
   {
     "key": "tobe1",
     "shortDescription": "to be",
-    "regular": false,
     "presentTense": {
       "simple": {
         "firstPerson": "am",
