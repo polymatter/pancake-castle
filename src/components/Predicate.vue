@@ -1,9 +1,8 @@
 <!-- Represents Editing a specific Predicate -->
 <template>
   <span class="predicate">
-    <!-- <h1>Predicate</h1> -->
     <span class="verb" v-on:click="toggleMode">
-      <template v-if="mode === 'view'">{{ verb.shortDescription || 'Verb' }}</template>
+      <slot v-if="mode === 'view'"></slot>
       <select v-model="verb" v-on:click.stop="" v-if="mode === 'edit'">
         <option
           v-for="verb in allVerbs"
@@ -19,7 +18,7 @@
         v-bind:type="'Object'"
         v-bind:allNouns="validObjects('directObject')"
         v-on:argumentUpdate="updateObject"
-      />
+      >Object</Argument>
     </span>
     <hr />
   </span>

@@ -11,7 +11,7 @@
       v-bind:allVerbs="allVerbs"
       v-bind:allObjects="allNouns"
       v-on:predicateUpdate="predicateUpdated"
-    />
+    >{{ selectedPhrase.predicate.verb ? formVerb(selectedPhrase.predicate.verb) : "Verb" }}</Predicate>
     {{ selectedPhrase }}
     <hr />
     {{ formPhrase }}
@@ -49,7 +49,7 @@ export default {
         tense = verb.presentTense.simple;
       }
 
-      conjugatedVerb = tense[context.verbForm]
+      conjugatedVerb = tense[context.verbForm];
       return conjugatedVerb;
     },
     formSubject: function(subject) {
