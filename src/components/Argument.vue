@@ -3,6 +3,13 @@
   <span class="argument" v-on:click="toggleMode">
     <slot v-if="mode === 'view'"></slot>
     <template v-if="mode === 'edit'">
+      <select v-model="adjectives" v-on:click.stop v-on:change="argumentUpdate" multiple>
+        <option
+          v-for="adjective in validAdjectives"
+          v-bind:key="adjective.key"
+          v-bind:value="adjective"
+        >{{adjective.value}}</option>
+      </select>
       <select v-model="nouns" v-on:click.stop v-on:change="argumentUpdate" multiple>
         <option v-for="noun in allNouns" v-bind:key="noun.key" v-bind:value="noun">{{noun.value}}</option>
       </select>
@@ -13,6 +20,8 @@
 </template>
 
 <script>
+import Adjectives from "../assets/adjectives.json";
+
 export default {
   name: "Argument",
   props: {
@@ -21,9 +30,26 @@ export default {
   },
   data: function() {
     return {
+      allAdjectives: Adjectives,
       nouns: [],
+      adjectives: [],
       mode: "view"
     };
+  },
+  computed: {
+    validAdjectives: function() {
+      let result = [];
+      if (this.nouns.length > 0) {
+        result = this.allAdjectives.filter(adjective =>
+          this.nouns[0].properties.reduce(
+            (result, requiredCategory) =>
+              result || adjective.categories.indexOf(requiredCategory) > -1,
+            false
+          )
+        );
+      }
+      return result;
+    }
   },
   methods: {
     argumentUpdate: function() {
@@ -31,6 +57,19 @@ export default {
     },
     toggleMode: function() {
       this.mode = this.mode === "view" ? "edit" : "view";
+    },
+    validAdjectives: function(type) {
+      let result = [];
+      if (this.verb && this.verb.directObject) {
+        result = this.allObjects.filter(noun =>
+          this.verb[type].required.reduce(
+            (result, requiredCategory) =>
+              result || noun.categories.indexOf(requiredCategory) > -1,
+            false
+          )
+        );
+      }
+      return result;
     }
   }
 };
