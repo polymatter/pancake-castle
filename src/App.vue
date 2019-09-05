@@ -96,7 +96,7 @@ export default {
       let secondPerson =
         !!phrase.subject.nouns[0].secondPerson &&
         phrase.subject.nouns.length === 1;
-      let plural = phrase.subject.length > 1;
+      let plural = phrase.subject.nouns.length > 1;
       let context = { plural, firstPerson, secondPerson };
       return context;
     },
