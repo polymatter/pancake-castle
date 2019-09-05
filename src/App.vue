@@ -15,7 +15,7 @@
       {{ selectedPhrase.predicate.verb ? formVerb(selectedPhrase.predicate.verb) : "Verb" }}
       <template
         v-slot:directObject
-      >{{ selectedPhrase.predicate.objects ? formObject(selectedPhrase.predicate.objects) : "Object" }}</template>
+      >{{ selectedPhrase.predicate.objects && selectedPhrase.predicate.objects.nouns ? formObject(selectedPhrase.predicate.objects) : "Object" }}</template>
     </Predicate>
     {{ selectedPhrase }}
     <hr />
