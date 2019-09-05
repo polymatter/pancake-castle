@@ -83,12 +83,14 @@ export default {
     formContext: function() {
       let phrase = this.selectedPhrase;
       let firstPerson =
-        !!phrase.subject.nouns[0].firstPerson &&
-        phrase.subject.nouns.length === 1;
+        phrase.subject.nouns &&
+        phrase.subject.nouns.length === 1 &&
+        !!phrase.subject.nouns[0].firstPerson;
       let secondPerson =
-        !!phrase.subject.nouns[0].secondPerson &&
-        phrase.subject.nouns.length === 1;
-      let plural = phrase.subject.nouns.length > 1;
+        phrase.subject.nouns &&
+        phrase.subject.nouns.length === 1 &&
+        !!phrase.subject.nouns[0].secondPerson;
+      let plural = phrase.subject.nouns && phrase.subject.nouns.length > 1;
       let verbForm = plural
         ? "thirdPersonPlural"
         : firstPerson
