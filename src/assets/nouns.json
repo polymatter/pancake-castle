@@ -5,26 +5,26 @@
     "firstPerson": true,
     "pluralSubjectForm": "Me",
     "categories": ["proper"],
-    "properties": ["size","judgeSize"]
+    "properties": ["size","judgeSize","feeling"]
   },
   {
     "key": "You",
     "value": "You",
     "secondPerson": true,
     "categories": ["proper"],
-    "properties": ["size","judgeSize"]
+    "properties": ["size","judgeSize","feeling"]
   },
   {
     "key": "Jeffrey",
     "value": "Jeffrey",
     "categories": ["proper","person"],
-    "properties": ["size","judgeSize"]
+    "properties": ["size","judgeSize","feeling"]
   },
   {
     "key": "Trish",
     "value": "Trish",
     "categories": ["proper","person"],
-    "properties": ["size","judgeSize"]
+    "properties": ["size","judgeSize","feeling"]
   },
   {
     "key": "Banana Tree",
