@@ -1,0 +1,37 @@
+[
+  {
+    "key": "green",
+    "value": "green",
+    "categories": ["colour"]
+  },
+  {
+    "key": "fat",
+    "value": "fat",
+    "categories": ["judgeSize"]
+  },
+  {
+    "key": "skinny",
+    "value": "skinny",
+    "categories": ["judgeSize"]
+  },
+  {
+    "key": "large",
+    "value": "large",
+    "categories": ["size"]
+  },
+  {
+    "key": "small",
+    "value": "small",
+    "categories": ["size"]
+  },
+  {
+    "key": "bored",
+    "value": "bored",
+    "categories": ["feelings"]
+  },
+  {
+    "key": "bored",
+    "value": "bored",
+    "categories": ["feelings"]
+  }
+]
