@@ -1,7 +1,8 @@
 <!-- Represents Editing a specific Predicate Argument -->
 <template>
   <span class="nounPhrase" v-on:click="toggleMode">
-    <slot v-if="mode === 'view'"></slot>
+    <SelectWord><slot></slot></SelectWord>
+    <!-- <slot v-if="mode === 'view'"></slot> -->
     <template v-if="mode === 'edit'">
       <select v-model="adjectives" v-on:click.stop v-on:change="nounPhraseUpdate" multiple>
         <option
@@ -21,6 +22,7 @@
 
 <script>
 import Adjectives from "../assets/adjectives.json";
+import SelectWord from "./SelectWord.vue"
 
 export default {
   name: "NounPhrase",
@@ -36,6 +38,9 @@ export default {
     };
   },
   computed: {
+  },
+  components: {
+    SelectWord
   },
   methods: {
     nounPhraseUpdate: function() {
