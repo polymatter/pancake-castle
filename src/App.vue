@@ -1,10 +1,10 @@
 <template>
   <div id="app">
-    <Argument
+    <NounPhrase
       v-bind:argument="selectedPhrase.subject"
       v-bind:allNouns="allNouns"
-      v-on:argumentUpdate="subjectUpdated"
-    >{{ selectedPhrase.subject.nouns ? formSubject(selectedPhrase.subject) : "Subject" }}</Argument>
+      v-on:nounPhraseUpdate="subjectUpdated"
+    >{{ selectedPhrase.subject.nouns ? formSubject(selectedPhrase.subject) : "Subject" }}</NounPhrase>
     <Predicate
       v-bind:predicate="selectedPhrase.predicate"
       v-bind:allVerbs="allVerbs"
@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import Argument from "./components/NounPhrase.vue";
+import NounPhrase from "./components/NounPhrase.vue";
 import Predicate from "./components/Predicate.vue";
 import Nouns from "./assets/nouns.json";
 import Verbs from "./assets/verbs.json";
@@ -139,7 +139,7 @@ export default {
     }
   },
   components: {
-    Argument,
+    NounPhrase,
     Predicate
   }
 };

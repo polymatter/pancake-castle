@@ -1,16 +1,16 @@
 <!-- Represents Editing a specific Predicate Argument -->
 <template>
-  <span class="argument" v-on:click="toggleMode">
+  <span class="nounPhrase" v-on:click="toggleMode">
     <slot v-if="mode === 'view'"></slot>
     <template v-if="mode === 'edit'">
-      <select v-model="adjectives" v-on:click.stop v-on:change="argumentUpdate" multiple>
+      <select v-model="adjectives" v-on:click.stop v-on:change="nounPhraseUpdate" multiple>
         <option
           v-for="adjective in validAdjectives"
           v-bind:key="adjective.key"
           v-bind:value="adjective"
         >{{adjective.value}}</option>
       </select>
-      <select v-model="nouns" v-on:click.stop v-on:change="argumentUpdate" multiple>
+      <select v-model="nouns" v-on:click.stop v-on:change="nounPhraseUpdate" multiple>
         <option v-for="noun in allNouns" v-bind:key="noun.key" v-bind:value="noun">{{noun.value}}</option>
       </select>
       <button class="confirm" v-on:click.stop="toggleMode">✓</button>
@@ -23,7 +23,7 @@
 import Adjectives from "../assets/adjectives.json";
 
 export default {
-  name: "Argument",
+  name: "NounPhrase",
   props: {
     allNouns: Array,
   },
@@ -38,8 +38,8 @@ export default {
   computed: {
   },
   methods: {
-    argumentUpdate: function() {
-      this.$emit("argumentUpdate", { nouns: this.nouns });
+    nounPhraseUpdate: function() {
+      this.$emit("nounPhraseUpdate", { nouns: this.nouns });
     },
     toggleMode: function() {
       this.mode = this.mode === "view" ? "edit" : "view";
@@ -63,7 +63,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.argument {
+.nounPhrase {
   border-color: coral;
   border-style: dotted;
 }
