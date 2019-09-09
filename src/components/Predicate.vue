@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import Argument from "./Argument.vue";
+import Argument from "./NounPhrase.vue";
 
 export default {
   name: "Predicate",

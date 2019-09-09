@@ -37,19 +37,6 @@ export default {
     };
   },
   computed: {
-    validAdjectives: function() {
-      let result = [];
-      if (this.nouns.length > 0) {
-        result = this.allAdjectives.filter(adjective =>
-          this.nouns[0].properties.reduce(
-            (result, requiredCategory) =>
-              result || adjective.categories.indexOf(requiredCategory) > -1,
-            false
-          )
-        );
-      }
-      return result;
-    }
   },
   methods: {
     argumentUpdate: function() {
