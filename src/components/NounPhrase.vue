@@ -26,7 +26,6 @@ export default {
   name: "Argument",
   props: {
     allNouns: Array,
-    type: String
   },
   data: function() {
     return {
