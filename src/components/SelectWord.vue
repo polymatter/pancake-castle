@@ -29,7 +29,7 @@ export default {
   },
   methods: {
     wordUpdate: function() {
-      this.$emit("wordUpdate", { words: this.words });
+      this.$emit("wordUpdate", this.words);
     },
     toggleMode: function() {
       this.mode = this.mode === "view" ? "edit" : "view";

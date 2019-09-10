@@ -1,22 +1,10 @@
 <!-- Represents Editing a specific Predicate Argument -->
 <template>
   <span class="nounPhrase" v-on:click="toggleMode">
-    <SelectWord><slot></slot></SelectWord>
-    <!-- <slot v-if="mode === 'view'"></slot> -->
-    <template v-if="mode === 'edit'">
-      <select v-model="adjectives" v-on:click.stop v-on:change="nounPhraseUpdate" multiple>
-        <option
-          v-for="adjective in validAdjectives"
-          v-bind:key="adjective.key"
-          v-bind:value="adjective"
-        >{{adjective.value}}</option>
-      </select>
-      <select v-model="nouns" v-on:click.stop v-on:change="nounPhraseUpdate" multiple>
-        <option v-for="noun in allNouns" v-bind:key="noun.key" v-bind:value="noun">{{noun.value}}</option>
-      </select>
-      <button class="confirm" v-on:click.stop="toggleMode">✓</button>
-      <button class="cancel" v-on:click.stop="toggleMode">X</button>
-    </template>
+    <SelectWord
+      v-bind:allWords="allNouns"
+      v-on:wordUpdate="nounUpdate"
+    ><slot></slot></SelectWord>
   </span>
 </template>
 
@@ -43,6 +31,10 @@ export default {
     SelectWord
   },
   methods: {
+    nounUpdate: function(noun) {
+      this.nouns = noun;
+      this.nounPhraseUpdate();
+    },
     nounPhraseUpdate: function() {
       this.$emit("nounPhraseUpdate", { nouns: this.nouns });
     },

@@ -57,11 +57,12 @@ export default {
       return conjugatedVerb;
     },
     formSubject: function(subject) {
-      return this.andConcatinate(
-        this.formContext.plural
-          ? subject.nouns.map(e => e.pluralSubjectForm || e.value)
-          : subject.nouns.map(e => e.value)
-      );
+      return subject.nouns[0].value;
+      // return this.andConcatinate(
+      //   this.formContext.plural
+      //     ? subject.nouns.map(e => e.pluralSubjectForm || e.value)
+      //     : subject.nouns.map(e => e.value)
+      // );
     },
     formObject: function(object) {
       return this.andConcatinate(
