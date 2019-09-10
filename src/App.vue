@@ -1,7 +1,6 @@
 <template>
   <div id="app">
     <NounPhrase
-      v-bind:argument="selectedPhrase.subject"
       v-bind:allNouns="allNouns"
       v-on:nounPhraseUpdate="subjectUpdated"
     >{{ selectedPhrase.subject.nouns ? formSubject(selectedPhrase.subject) : "Subject" }}</NounPhrase>
