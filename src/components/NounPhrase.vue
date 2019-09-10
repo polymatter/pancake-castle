@@ -9,17 +9,16 @@
 </template>
 
 <script>
-import Adjectives from "../assets/adjectives.json";
 import SelectWord from "./SelectWord.vue"
 
 export default {
   name: "NounPhrase",
   props: {
     allNouns: Array,
+    allAdjectives: Array
   },
   data: function() {
     return {
-      allAdjectives: Adjectives,
       nouns: [],
       adjectives: [],
       mode: "view"

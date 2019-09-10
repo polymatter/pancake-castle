@@ -2,6 +2,7 @@
   <div id="app">
     <NounPhrase
       v-bind:allNouns="allNouns"
+      v-bind:allAdjectives="allAdjectives"
       v-on:nounPhraseUpdate="subjectUpdated"
     >{{ selectedPhrase.subject.nouns ? formSubject(selectedPhrase.subject) : "Subject" }}</NounPhrase>
     <Predicate
@@ -24,6 +25,7 @@
 <script>
 import NounPhrase from "./components/NounPhrase.vue";
 import Predicate from "./components/Predicate.vue";
+import Adjectives from "./assets/adjectives.json";
 import Nouns from "./assets/nouns.json";
 import Verbs from "./assets/verbs.json";
 
@@ -31,6 +33,7 @@ export default {
   name: "app",
   data: function() {
     return {
+      allAdjectives: Adjectives,
       allNouns: Nouns,
       allVerbs: Verbs,
       phraseIndex: 0,
