@@ -1,6 +1,6 @@
 <!-- Represents Editing a specific Predicate Argument -->
 <template>
-  <span class="nounPhrase" v-on:click="toggleMode">
+  <span class="nounPhrase">
     <SelectWord
       v-bind:allWords="allNouns"
       v-on:wordUpdate="nounUpdate"
