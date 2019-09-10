@@ -4,7 +4,10 @@
     <SelectWord
       v-bind:allWords="allNouns"
       v-on:wordUpdate="nounUpdate"
-    ><slot></slot></SelectWord>
+    >
+    <slot></slot>
+    <template v-slot:modifier><button class="add">+</button></template>
+    </SelectWord>
   </span>
 </template>
 

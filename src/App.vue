@@ -165,4 +165,8 @@ button.confirm {
   background-color: darkgreen;
   color: white;
 }
+button.add {
+  background-color: darkblue;
+  color: white;
+}
 </style>

@@ -3,6 +3,7 @@
   <span class="words" v-on:click="toggleMode">
     <slot v-if="mode === 'view'"></slot>
     <template v-if="mode === 'edit'">
+      <slot name="modifier"></slot>
       <select v-model="words" v-on:click.stop v-on:change="wordUpdate" multiple>
         <option v-for="word in allWords" v-bind:key="word.key || word" v-bind:value="word">{{word.value || word}}</option>
       </select>
