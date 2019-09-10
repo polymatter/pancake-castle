@@ -33,15 +33,10 @@ export default {
     SelectWord
   },
   methods: {
-    nounUpdate: function(noun) {
-      this.nouns = noun;
       this.nounPhraseUpdate();
     },
     nounPhraseUpdate: function() {
-      this.$emit("nounPhraseUpdate", { nouns: this.nouns });
-    },
-    toggleMode: function() {
-      this.mode = this.mode === "view" ? "edit" : "view";
+      this.$emit("nounPhraseUpdate", { noun: this.noun });
     },
     validAdjectives: function(type) {
       let result = [];

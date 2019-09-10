@@ -4,7 +4,7 @@
       v-bind:allNouns="allNouns"
       v-bind:allAdjectives="allAdjectives"
       v-on:nounPhraseUpdate="subjectUpdated"
-    >{{ selectedPhrase.subject.nouns ? formSubject(selectedPhrase.subject) : "Subject" }}</NounPhrase>
+    >{{ selectedPhrase.subject.noun ? formSubject(selectedPhrase.subject) : "Subject" }}</NounPhrase>
     <Predicate
       v-bind:predicate="selectedPhrase.predicate"
       v-bind:allVerbs="allVerbs"
@@ -59,12 +59,7 @@ export default {
       return conjugatedVerb;
     },
     formSubject: function(subject) {
-      return subject.nouns[0].value;
-      // return this.andConcatinate(
-      //   this.formContext.plural
-      //     ? subject.nouns.map(e => e.pluralSubjectForm || e.value)
-      //     : subject.nouns.map(e => e.value)
-      // );
+      return subject.noun.value;
     },
     formObject: function(object) {
       return this.andConcatinate(
@@ -90,14 +85,12 @@ export default {
     formContext: function() {
       let phrase = this.selectedPhrase;
       let firstPerson =
-        phrase.subject.nouns &&
-        phrase.subject.nouns.length === 1 &&
-        !!phrase.subject.nouns[0].firstPerson;
+        phrase.subject.noun &&
+        !!phrase.subject.noun.firstPerson;
       let secondPerson =
-        phrase.subject.nouns &&
-        phrase.subject.nouns.length === 1 &&
-        !!phrase.subject.nouns[0].secondPerson;
-      let plural = phrase.subject.nouns && phrase.subject.nouns.length > 1;
+        phrase.subject.noun &&
+        !!phrase.subject.noun.secondPerson;
+      let plural = false;
       let verbForm = plural
         ? "thirdPersonPlural"
         : firstPerson
@@ -114,8 +107,7 @@ export default {
       if (
         phrase.subject &&
         phrase.predicate &&
-        phrase.subject.nouns &&
-        phrase.subject.nouns.length > 0 &&
+        phrase.subject.noun &&
         phrase.predicate.verb &&
         (!phrase.predicate.directObject ||
           phrase.predicate.objects.nouns.length > 0)
