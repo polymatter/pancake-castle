@@ -2,11 +2,17 @@
 <template>
   <span class="nounPhrase">
     <SelectWord
+      v-for="n in adjectiveSlots"
+      v-bind:key="n"
+      v-bind:allWords="allAdjectives"
+      v-on:wordUpdate="adjectiveUpdate"
+    >{{ adjectives && adjectives[0] ? adjectives[0].value : "" }}</SelectWord>
+    <SelectWord
       v-bind:allWords="allNouns"
       v-on:wordUpdate="nounUpdate"
     >
     <slot></slot>
-    <template v-slot:modifier><button class="add">+</button></template>
+    <template v-slot:modifier><button class="add" v-on:click="addAdjective">+</button></template>
     </SelectWord>
   </span>
 </template>
@@ -22,9 +28,9 @@ export default {
   },
   data: function() {
     return {
-      nouns: [],
+      noun: "",
+      adjectiveSlots: 0,
       adjectives: [],
-      mode: "view"
     };
   },
   computed: {
@@ -33,6 +39,14 @@ export default {
     SelectWord
   },
   methods: {
+    addAdjective: function() {
+      this.adjectiveSlots = 1;
+    },
+    adjectiveUpdate: function(adjective) {
+      this.adjectives = adjective;
+    },
+    nounUpdate: function(nouns) {
+      this.noun = nouns[0];
       this.nounPhraseUpdate();
     },
     nounPhraseUpdate: function() {
