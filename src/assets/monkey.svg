@@ -1,0 +1,14 @@
+<svg width="639.9999999999999" height="480" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+ <!-- Created with SVG-edit - https://github.com/SVG-Edit/svgedit-->
+
+ <g class="layer">
+  <title>Layer 1</title>
+  <path d="m197.09201,156.56231c-50.68,-59.38889 22.43472,-133.56231 83.53078,-133.56231c61.09605,0 150.64693,62.24804 103.45616,128.8177c-47.19077,66.56966 -30.74319,93.87077 -91.83924,93.87077c-61.09605,0 -44.4677,-29.73727 -95.1477,-89.12616z" fill="#7f3f00" id="svg_7" stroke="#000000" stroke-dasharray="null" stroke-linecap="null" stroke-linejoin="null" stroke-opacity="0.01" stroke-width="5"/>
+  <path d="m214.5,149.5c-52,-44.83425 27.45856,-93 70,-93c42.54144,0 123,39.16575 79,89c-44,49.83425 -30.45856,96 -73,96c-42.54144,0 -24,-47.16575 -76,-92z" fill="#ffd4aa" id="svg_4" stroke="#000000" stroke-dasharray="null" stroke-linecap="null" stroke-linejoin="null" stroke-opacity="0.01" stroke-width="5"/>
+  <circle cx="254.5" cy="115.5" fill="#000000" id="left_eye" r="17.20465" stroke="#ffd4aa" stroke-dasharray="null" stroke-linecap="null" stroke-linejoin="null" stroke-width="5"/>
+  <circle cx="317" cy="112.5" fill="#000000" id="right_eye" r="17.20465" stroke="#ffd4aa" stroke-dasharray="null" stroke-linecap="null" stroke-linejoin="null" stroke-width="5"/>
+  <path d="m290.99691,193.22583c0.46644,-12.61538 0.34598,-32.64388 24.08593,-33.9886" fill="none" id="svg_3" stroke="#000000" stroke-dasharray="null" stroke-linecap="null" stroke-linejoin="null" stroke-width="5"/>
+  <path d="m263.5,160.5c28.95442,4.16524 26.43875,18.26496 26.54986,33.5584" fill="none" id="svg_12" stroke="#000000" stroke-dasharray="null" stroke-linecap="null" stroke-linejoin="null" stroke-width="5"/>
+  <path d="m260.5,208.5c21,13.33333 42.9,12.66667 63,1" fill="none" id="svg_9" stroke="#000000" stroke-dasharray="null" stroke-linecap="null" stroke-linejoin="null" stroke-width="5"/>
+ </g>
+</svg>
