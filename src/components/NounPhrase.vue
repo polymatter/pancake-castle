@@ -5,15 +5,17 @@
       v-for="n in adjectiveSlots"
       v-bind:key="n"
       v-bind:allWords="allAdjectives"
-      v-on:wordUpdate="adjectiveUpdate"
-    >{{ adjectives && adjectives[0] ? adjectives[0].value : "" }}</SelectWord>
+      v-bind:eventName="adjectiveUpdateName"
+      v-on:adjectiveUpdate="adjectiveUpdate"
+    >{{ adjectives && adjectives[0] ? (adjectives[0].value || adjectives) : n + ". Adjective" }}</SelectWord>
     <SelectWord
       v-bind:allWords="allNouns"
       v-on:wordUpdate="nounUpdate"
-    >
-    <slot></slot>
+    >{{ noun.value || 'Subject'}}
     <template v-slot:modifier><button class="add" v-on:click="addAdjective">+</button></template>
     </SelectWord>
+    ||
+    <slot></slot>
   </span>
 </template>
 
@@ -28,6 +30,7 @@ export default {
   },
   data: function() {
     return {
+      adjectiveUpdateName: "adjectiveUpdate",
       noun: "",
       adjectiveSlots: 0,
       adjectives: [],
@@ -43,14 +46,15 @@ export default {
       this.adjectiveSlots = 1;
     },
     adjectiveUpdate: function(adjective) {
-      this.adjectives = adjective;
+      this.adjectives[0] = adjective[0];
+      this.nounPhraseUpdate();
     },
     nounUpdate: function(nouns) {
       this.noun = nouns[0];
       this.nounPhraseUpdate();
     },
     nounPhraseUpdate: function() {
-      this.$emit("nounPhraseUpdate", { noun: this.noun });
+      this.$emit("nounPhraseUpdate", { noun: this.noun, adjectives: this.adjectives.map(a => a) });
     },
     validAdjectives: function(type) {
       let result = [];

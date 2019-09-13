@@ -59,7 +59,13 @@ export default {
       return conjugatedVerb;
     },
     formSubject: function(subject) {
-      return subject.noun.value;
+      let result = subject.noun.value;
+
+      if (Array.isArray(subject.adjectives) && subject.adjectives.length > 0) {
+        result = "The " + this.andConcatinate(subject.adjectives.map(a => a.value)) + " " + subject.noun.value;
+      }
+
+      return result;
     },
     formObject: function(object) {
       return this.andConcatinate(

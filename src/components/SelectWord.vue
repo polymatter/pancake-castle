@@ -18,7 +18,8 @@
 export default {
   name: "SelectWord",
   props: {
-    allWords: Array
+    allWords: Array,
+    eventName: String
   },
   data: function() {
     return {
@@ -30,7 +31,7 @@ export default {
   },
   methods: {
     wordUpdate: function() {
-      this.$emit("wordUpdate", this.words);
+      this.$emit(this.eventName || "wordUpdate", this.words);
     },
     toggleMode: function() {
       this.mode = this.mode === "view" ? "edit" : "view";
