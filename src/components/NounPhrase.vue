@@ -7,15 +7,13 @@
       v-bind:allWords="allAdjectives"
       v-bind:eventName="adjectiveUpdateName"
       v-on:adjectiveUpdate="adjectiveUpdate"
-    >{{ adjectives && adjectives[0] ? (adjectives[0].value || adjectives) : n + ". Adjective" }}</SelectWord>
+    ><slot name="formAdjectives">Adjective</slot></SelectWord>
     <SelectWord
       v-bind:allWords="allNouns"
       v-on:wordUpdate="nounUpdate"
-    >{{ noun.value || 'Subject'}}
+    ><slot></slot>
     <template v-slot:modifier><button class="add" v-on:click="addAdjective">+</button></template>
     </SelectWord>
-    ||
-    <slot></slot>
   </span>
 </template>
 

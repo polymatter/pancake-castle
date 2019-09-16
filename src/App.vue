@@ -4,7 +4,9 @@
       v-bind:allNouns="allNouns"
       v-bind:allAdjectives="allAdjectives"
       v-on:nounPhraseUpdate="subjectUpdated"
-    >{{ selectedPhrase.subject.noun ? formSubject(selectedPhrase.subject) : "Subject" }}</NounPhrase>
+    >{{ selectedPhrase.subject.noun ? formSubjectNoun(selectedPhrase.subject.noun) : "Subject" }}
+    <template v-slot:formAdjectives>{{ formAdjectives(selectedPhrase.subject.adjectives) }}</template>
+    </NounPhrase>
     <Predicate
       v-bind:predicate="selectedPhrase.predicate"
       v-bind:allVerbs="allVerbs"
@@ -59,11 +61,7 @@ export default {
       return conjugatedVerb;
     },
     formSubject: function(subject) {
-      let result = subject.noun.value;
-
-      if (Array.isArray(subject.adjectives) && subject.adjectives.length > 0) {
-        result = "The " + this.andConcatinate(subject.adjectives.map(a => a.value)) + " " + subject.noun.value;
-      }
+      let result = this.formAdjectives(subject.adjectives) + " " + this.formSubjectNoun(subject.noun);
 
       return result;
     },
@@ -73,6 +71,22 @@ export default {
           ? object.nouns.map(e => e.objectForm || e.value)
           : object.nouns.map(e => e.value)
       );
+    },
+    formSubjectNoun: function(noun) {
+      return (noun.categories && !noun.categories.includes("proper")) 
+      ? noun.value.toLowerCase() 
+      : noun.value;
+    },
+    formAdjectives: function(adjectives) {
+      let result;
+      
+      if (Array.isArray(adjectives) && adjectives.length > 0) {
+        result = "The " + this.andConcatinate(adjectives.map(a => a.value));
+      } else {
+        result = "Adjective"
+      }
+
+      return result;
     },
     andConcatinate: function(values) {
       let lastValue = values.pop();
