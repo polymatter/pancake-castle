@@ -4,7 +4,7 @@
       v-bind:allNouns="allNouns"
       v-bind:allAdjectives="allAdjectives"
       v-on:nounPhraseUpdate="subjectUpdated"
-    >{{ selectedPhrase.subject.noun ? formSubjectNoun(selectedPhrase.subject.noun) : "Subject" }}
+    >{{ selectedPhrase.subject.noun ? formNoun(selectedPhrase.subject.noun) : "Subject" }}
     <template v-slot:formAdjectives>{{ formAdjectives(selectedPhrase.subject.adjectives) }}</template>
     </NounPhrase>
     <Predicate
@@ -61,18 +61,14 @@ export default {
       return conjugatedVerb;
     },
     formSubject: function(subject) {
-      let result = this.formAdjectives(subject.adjectives) + " " + this.formSubjectNoun(subject.noun);
+      let result = this.formAdjectives(subject.adjectives) + " " + this.formNoun(subject.noun);
 
       return result;
     },
     formObject: function(object) {
-      return this.andConcatinate(
-        this.formContext.plural
-          ? object.nouns.map(e => e.objectForm || e.value)
-          : object.nouns.map(e => e.value)
-      );
+      return this.formNoun(object.noun);
     },
-    formSubjectNoun: function(noun) {
+    formNoun: function(noun) {
       return (noun.categories && !noun.categories.includes("proper")) 
       ? noun.value.toLowerCase() 
       : noun.value;
