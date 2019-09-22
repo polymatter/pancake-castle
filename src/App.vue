@@ -134,7 +134,7 @@ export default {
         let objectFormed;
         if (
           phrase.predicate.verb.directObject &&
-          phrase.predicate.objects.nouns
+          phrase.predicate.objects.noun
         ) {
           objectFormed = this.formObject(phrase.predicate.objects);
         }
