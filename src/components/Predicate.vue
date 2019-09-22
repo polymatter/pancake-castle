@@ -12,22 +12,24 @@
       </select>
     </span>
     <span class="objects" v-if="verb">
-      <Argument
+      <NounPhrase
         v-if="verb && verb.directObject"
-        v-bind:argument="objects"
-        v-bind:type="'Object'"
-        v-bind:allNouns="validObjects('directObject')"
-        v-on:argumentUpdate="updateObject"
+        v-bind:allNouns="allObjects"
+        v-bind:allAdjectives="allAdjectives"
+        v-on:nounPhraseUpdate="updateObject"
       >
         <slot name="directObject"></slot>
-      </Argument>
+        <template
+          v-slot:formAdjectives
+        >{{ formAdjectives(selectedPhrase.subject.adjectives) }}</template>
+      </NounPhrase>
     </span>
     <hr />
   </span>
 </template>
 
 <script>
-import Argument from "./NounPhrase.vue";
+import NounPhrase from "./NounPhrase.vue";
 
 export default {
   name: "Predicate",
@@ -48,6 +50,7 @@ export default {
     },
     updateObject: function(objects) {
       this.objects = objects;
+      this.updatePredicate();
     },
     validObjects: function(type) {
       let result = [];
@@ -81,7 +84,7 @@ export default {
     }
   },
   components: {
-    Argument
+    NounPhrase
   }
 };
 </script>

@@ -14,9 +14,10 @@
       v-on:predicateUpdate="predicateUpdated"
     >
       {{ selectedPhrase.predicate.verb ? formVerb(selectedPhrase.predicate.verb) : "Verb" }}
+      <template v-slot:formAdjectives>{{ formAdjectives(selectedPhrase.predicate.objects.adjectives) }}</template>
       <template
         v-slot:directObject
-      >{{ selectedPhrase.predicate.objects && selectedPhrase.predicate.objects.nouns ? formObject(selectedPhrase.predicate.objects) : "Object" }}</template>
+      >{{ selectedPhrase.predicate.objects && selectedPhrase.predicate.objects.noun ? formObject(selectedPhrase.predicate.objects) : "Object" }}</template>
     </Predicate>
     {{ selectedPhrase }}
     <hr />
