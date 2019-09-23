@@ -19,9 +19,7 @@
         v-on:nounPhraseUpdate="updateObject"
       >
         <slot name="directObject"></slot>
-        <template
-          v-slot:formAdjectives
-        >{{ formAdjectives(selectedPhrase.subject.adjectives) }}</template>
+        <template v-slot:formAdjectives><slot name="formAdjectives"></slot></template>
       </NounPhrase>
     </span>
     <hr />
@@ -30,6 +28,7 @@
 
 <script>
 import NounPhrase from "./NounPhrase.vue";
+import Adjectives from "../assets/adjectives.json";
 
 export default {
   name: "Predicate",
@@ -39,6 +38,7 @@ export default {
   },
   data: function() {
     return {
+      allAdjectives: Adjectives,
       objects: [],
       verb: {},
       mode: "view"
