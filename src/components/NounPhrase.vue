@@ -41,14 +41,14 @@ export default {
   },
   methods: {
     addAdjective: function() {
-      this.adjectiveSlots = 1;
+      this.adjectiveSlots += 1;
     },
-    adjectiveUpdate: function(adjective) {
-      this.adjectives[0] = adjective[0];
+    adjectiveUpdate: function(adjective, key) {
+      this.adjectives[key - 1] = adjective;
       this.nounPhraseUpdate();
     },
-    nounUpdate: function(nouns) {
-      this.noun = nouns[0];
+    nounUpdate: function(noun) {
+      this.noun = noun;
       this.nounPhraseUpdate();
     },
     nounPhraseUpdate: function() {

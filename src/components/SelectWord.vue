@@ -30,8 +30,11 @@ export default {
   computed: {
   },
   methods: {
-    wordUpdate: function() {
-      this.$emit(this.eventName || "wordUpdate", this.words);
+    wordUpdate: function(word) {
+      if (this.words.length > 1) {
+        this.words = [word];
+      }
+      this.$emit(this.eventName || "wordUpdate", this.words[0], this.$vnode.key);
     },
     toggleMode: function() {
       this.mode = this.mode === "view" ? "edit" : "view";
