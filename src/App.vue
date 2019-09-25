@@ -73,7 +73,9 @@ export default {
       return result;
     },
     formObject: function(object) {
-      return this.formNoun(object.noun);
+      let result = this.formAdjectives(object.adjectives) + " " + this.formNoun(object.noun);
+
+      return result;
     },
     formNoun: function(noun) {
       return (noun.categories && !noun.categories.includes("proper")) 
