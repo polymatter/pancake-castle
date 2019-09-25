@@ -84,7 +84,7 @@ export default {
       let result;
       
       if (Array.isArray(adjectives) && adjectives.length > 0) {
-        result = "The " + this.andConcatinate(adjectives.map(a => a.value));
+        result = "the " + this.andConcatinate(adjectives.map(a => a.value));
       } else {
         result = "Adjective"
       }
