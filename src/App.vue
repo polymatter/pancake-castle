@@ -17,7 +17,7 @@
       <template v-slot:formAdjectives>{{ selectedPhrase.predicate.objects && formAdjectives(selectedPhrase.predicate.objects.adjectives) }}</template>
       <template
         v-slot:directObject
-      >{{ selectedPhrase.predicate.objects && selectedPhrase.predicate.objects.noun ? formObject(selectedPhrase.predicate.objects) : "Object" }}</template>
+      >{{ selectedPhrase.predicate.objects && selectedPhrase.predicate.objects.noun ? formNoun(selectedPhrase.predicate.objects.noun) : "Object" }}</template>
     </Predicate>
     <hr />
     <Category
