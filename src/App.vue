@@ -19,6 +19,11 @@
         v-slot:directObject
       >{{ selectedPhrase.predicate.objects && selectedPhrase.predicate.objects.noun ? formObject(selectedPhrase.predicate.objects) : "Object" }}</template>
     </Predicate>
+    <hr />
+    <Category
+      v-bind:initialWords="allNouns"
+    >Thing</Category>
+    <hr />
     {{ selectedPhrase }}
     <hr />
     {{ formPhrase }}
@@ -29,6 +34,7 @@
 import NounPhrase from "./components/NounPhrase.vue";
 import Predicate from "./components/Predicate.vue";
 import Adjectives from "./assets/adjectives.json";
+import Category from "./components/Category.vue";
 import Nouns from "./assets/nouns.json";
 import Verbs from "./assets/verbs.json";
 
@@ -152,7 +158,8 @@ export default {
   },
   components: {
     NounPhrase,
-    Predicate
+    Predicate,
+    Category
   }
 };
 </script>
