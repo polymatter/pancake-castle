@@ -1,6 +1,7 @@
 <!-- Represents Editing a specific Predicate Argument -->
 <template>
   <span class="nounPhrase">
+    <template v-if="adjectiveSlots > 0">the</template>
     <SelectWord
       v-for="n in adjectiveSlots"
       v-bind:key="n"
