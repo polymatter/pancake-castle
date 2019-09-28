@@ -4,47 +4,56 @@
     "value": "I",
     "firstPerson": true,
     "pluralSubjectForm": "Me",
-    "categories": ["proper"]
+    "categories": ["proper"],
+    "properties": ["size","judgeSize","feeling"]
   },
   {
     "key": "You",
     "value": "You",
     "secondPerson": true,
-    "categories": ["proper"]
+    "categories": ["proper"],
+    "properties": ["size","judgeSize","feeling"]
   },
   {
     "key": "Jeffrey",
     "value": "Jeffrey",
-    "categories": ["proper","person"]
+    "categories": ["proper","person"],
+    "properties": ["size","judgeSize","feeling"]
   },
   {
     "key": "Trish",
     "value": "Trish",
-    "categories": ["proper","person"]
+    "categories": ["proper","person"],
+    "properties": ["size","judgeSize","feeling"]
   },
   {
     "key": "Banana Tree",
     "value": "Banana Tree",
-    "categories": ["common","plant"]
+    "categories": ["common","plant"],
+    "properties": ["size","colour"]
   },
   {
     "key": "Banana",
     "value": "Banana",
-    "categories": ["common","food"]
+    "categories": ["common","food"],
+    "properties": ["colour","size"]
   },
   {
     "key": "Apple",
     "value": "Apple",
-    "categories": ["common","food"]
+    "categories": ["common","food"],
+    "properties": ["colour","size"]
   },
   {
     "key": "Pho",
     "value": "Pho",
-    "categories": ["common","food","prepared"]
+    "categories": ["common","food","prepared"],
+    "properties": ["size"]
   },
   {
     "key": "Lunch",
     "value": "Lunch",
-    "categories": ["abstract","meal"]
+    "categories": ["abstract","meal","size"],
+    "properties": ["size"]
   }
 ]

@@ -1,11 +1,12 @@
 <template>
   <div id="app">
-    <Argument
-      v-bind:argument="selectedPhrase.subject"
-      v-bind:type="'Subject'"
+    <NounPhrase
       v-bind:allNouns="allNouns"
-      v-on:argumentUpdate="subjectUpdated"
-    >{{ selectedPhrase.subject.nouns ? formSubject(selectedPhrase.subject) : "Subject" }}</Argument>
+      v-bind:allAdjectives="allAdjectives"
+      v-on:nounPhraseUpdate="subjectUpdated"
+    >{{ selectedPhrase.subject.noun ? formNoun(selectedPhrase.subject.noun) : "Subject" }}
+    <template v-slot:formAdjectives>{{ formAdjectives(selectedPhrase.subject.adjectives) }}</template>
+    </NounPhrase>
     <Predicate
       v-bind:predicate="selectedPhrase.predicate"
       v-bind:allVerbs="allVerbs"
@@ -13,9 +14,10 @@
       v-on:predicateUpdate="predicateUpdated"
     >
       {{ selectedPhrase.predicate.verb ? formVerb(selectedPhrase.predicate.verb) : "Verb" }}
+      <template v-slot:formAdjectives>{{ selectedPhrase.predicate.objects && formAdjectives(selectedPhrase.predicate.objects.adjectives) }}</template>
       <template
         v-slot:directObject
-      >{{ selectedPhrase.predicate.objects && selectedPhrase.predicate.objects.nouns ? formObject(selectedPhrase.predicate.objects) : "Object" }}</template>
+      >{{ selectedPhrase.predicate.objects && selectedPhrase.predicate.objects.noun ? formObject(selectedPhrase.predicate.objects) : "Object" }}</template>
     </Predicate>
     {{ selectedPhrase }}
     <hr />
@@ -24,8 +26,9 @@
 </template>
 
 <script>
-import Argument from "./components/Argument.vue";
+import NounPhrase from "./components/NounPhrase.vue";
 import Predicate from "./components/Predicate.vue";
+import Adjectives from "./assets/adjectives.json";
 import Nouns from "./assets/nouns.json";
 import Verbs from "./assets/verbs.json";
 
@@ -33,6 +36,7 @@ export default {
   name: "app",
   data: function() {
     return {
+      allAdjectives: Adjectives,
       allNouns: Nouns,
       allVerbs: Verbs,
       phraseIndex: 0,
@@ -58,18 +62,28 @@ export default {
       return conjugatedVerb;
     },
     formSubject: function(subject) {
-      return this.andConcatinate(
-        this.formContext.plural
-          ? subject.nouns.map(e => e.pluralSubjectForm || e.value)
-          : subject.nouns.map(e => e.value)
-      );
+      let result = this.formAdjectives(subject.adjectives) + " " + this.formNoun(subject.noun);
+
+      return result;
     },
     formObject: function(object) {
-      return this.andConcatinate(
-        this.formContext.plural
-          ? object.nouns.map(e => e.objectForm || e.value)
-          : object.nouns.map(e => e.value)
-      );
+      return this.formNoun(object.noun);
+    },
+    formNoun: function(noun) {
+      return (noun.categories && !noun.categories.includes("proper")) 
+      ? noun.value.toLowerCase() 
+      : noun.value;
+    },
+    formAdjectives: function(adjectives) {
+      let result;
+      
+      if (Array.isArray(adjectives) && adjectives.length > 0) {
+        result = "The " + this.andConcatinate(adjectives.map(a => a.value));
+      } else {
+        result = "Adjective"
+      }
+
+      return result;
     },
     andConcatinate: function(values) {
       let lastValue = values.pop();
@@ -88,14 +102,12 @@ export default {
     formContext: function() {
       let phrase = this.selectedPhrase;
       let firstPerson =
-        phrase.subject.nouns &&
-        phrase.subject.nouns.length === 1 &&
-        !!phrase.subject.nouns[0].firstPerson;
+        phrase.subject.noun &&
+        !!phrase.subject.noun.firstPerson;
       let secondPerson =
-        phrase.subject.nouns &&
-        phrase.subject.nouns.length === 1 &&
-        !!phrase.subject.nouns[0].secondPerson;
-      let plural = phrase.subject.nouns && phrase.subject.nouns.length > 1;
+        phrase.subject.noun &&
+        !!phrase.subject.noun.secondPerson;
+      let plural = false;
       let verbForm = plural
         ? "thirdPersonPlural"
         : firstPerson
@@ -112,8 +124,7 @@ export default {
       if (
         phrase.subject &&
         phrase.predicate &&
-        phrase.subject.nouns &&
-        phrase.subject.nouns.length > 0 &&
+        phrase.subject.noun &&
         phrase.predicate.verb &&
         (!phrase.predicate.directObject ||
           phrase.predicate.objects.nouns.length > 0)
@@ -123,7 +134,7 @@ export default {
         let objectFormed;
         if (
           phrase.predicate.verb.directObject &&
-          phrase.predicate.objects.nouns
+          phrase.predicate.objects.noun
         ) {
           objectFormed = this.formObject(phrase.predicate.objects);
         }
@@ -140,7 +151,7 @@ export default {
     }
   },
   components: {
-    Argument,
+    NounPhrase,
     Predicate
   }
 };
@@ -154,5 +165,17 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+button.cancel {
+  background-color: #f44336;
+  color: white;
+}
+button.confirm {
+  background-color: darkgreen;
+  color: white;
+}
+button.add {
+  background-color: darkblue;
+  color: white;
 }
 </style>
