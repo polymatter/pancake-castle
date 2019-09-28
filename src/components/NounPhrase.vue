@@ -2,14 +2,19 @@
 <template>
   <span class="nounPhrase">
     <template v-if="adjectiveSlots > 0">the</template>
-    <SelectWord
-      v-for="n in adjectiveSlots"
-      v-bind:key="n"
-      v-bind:allWords="allAdjectives"
-      v-bind:eventName="adjectiveUpdateName"
-      v-bind:defaultForm="'Adjective'"
-      v-on:adjectiveUpdate="adjectiveUpdate"
-    ></SelectWord>
+    <template v-for="n in adjectiveSlots">
+      <SelectWord
+        v-bind:key="n"
+        v-bind:allWords="allAdjectives"
+        v-bind:eventName="adjectiveUpdateName"
+        v-bind:defaultForm="'Adjective'"
+        v-on:adjectiveUpdate="adjectiveUpdate"
+      ></SelectWord>
+      <template v-if="n < adjectiveSlots">
+        <template v-if="n + 1 == adjectiveSlots">and</template>
+        <template v-else>, </template>
+      </template>
+    </template>
     <SelectWord
       v-bind:allWords="allNouns"
       v-bind:defaultForm="Subject"
