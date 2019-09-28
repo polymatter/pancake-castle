@@ -5,7 +5,6 @@
       v-bind:allAdjectives="allAdjectives"
       v-on:nounPhraseUpdate="subjectUpdated"
     >{{ selectedPhrase.subject.noun ? formNoun(selectedPhrase.subject.noun) : "Subject" }}
-    <template v-slot:formAdjectives>{{ formAdjectives(selectedPhrase.subject.adjectives) }}</template>
     </NounPhrase>
     <Predicate
       v-bind:predicate="selectedPhrase.predicate"
@@ -17,8 +16,13 @@
       <template v-slot:formAdjectives>{{ selectedPhrase.predicate.objects && formAdjectives(selectedPhrase.predicate.objects.adjectives) }}</template>
       <template
         v-slot:directObject
-      >{{ selectedPhrase.predicate.objects && selectedPhrase.predicate.objects.noun ? formObject(selectedPhrase.predicate.objects) : "Object" }}</template>
+      >{{ selectedPhrase.predicate.objects && selectedPhrase.predicate.objects.noun ? formNoun(selectedPhrase.predicate.objects.noun) : "Object" }}</template>
     </Predicate>
+    <hr />
+    <Category
+      v-bind:initialWords="allNouns"
+    >Thing</Category>
+    <hr />
     {{ selectedPhrase }}
     <hr />
     {{ formPhrase }}
@@ -29,6 +33,7 @@
 import NounPhrase from "./components/NounPhrase.vue";
 import Predicate from "./components/Predicate.vue";
 import Adjectives from "./assets/adjectives.json";
+import Category from "./components/Category.vue";
 import Nouns from "./assets/nouns.json";
 import Verbs from "./assets/verbs.json";
 
@@ -67,7 +72,9 @@ export default {
       return result;
     },
     formObject: function(object) {
-      return this.formNoun(object.noun);
+      let result = this.formAdjectives(object.adjectives) + " " + this.formNoun(object.noun);
+
+      return result;
     },
     formNoun: function(noun) {
       return (noun.categories && !noun.categories.includes("proper")) 
@@ -78,7 +85,7 @@ export default {
       let result;
       
       if (Array.isArray(adjectives) && adjectives.length > 0) {
-        result = "The " + this.andConcatinate(adjectives.map(a => a.value));
+        result = "the " + this.andConcatinate(adjectives.map(a => a.value));
       } else {
         result = "Adjective"
       }
@@ -152,7 +159,8 @@ export default {
   },
   components: {
     NounPhrase,
-    Predicate
+    Predicate,
+    Category
   }
 };
 </script>

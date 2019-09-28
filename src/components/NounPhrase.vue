@@ -1,15 +1,23 @@
 <!-- Represents Editing a specific Predicate Argument -->
 <template>
   <span class="nounPhrase">
-    <SelectWord
-      v-for="n in adjectiveSlots"
-      v-bind:key="n"
-      v-bind:allWords="allAdjectives"
-      v-bind:eventName="adjectiveUpdateName"
-      v-on:adjectiveUpdate="adjectiveUpdate"
-    ><slot name="formAdjectives">Adjective</slot></SelectWord>
+    <template v-if="adjectiveSlots > 0">the</template>
+    <template v-for="n in adjectiveSlots">
+      <SelectWord
+        v-bind:key="n"
+        v-bind:allWords="allAdjectives"
+        v-bind:eventName="adjectiveUpdateName"
+        v-bind:defaultForm="'Adjective'"
+        v-on:adjectiveUpdate="adjectiveUpdate"
+      ></SelectWord>
+      <template v-if="n < adjectiveSlots">
+        <template v-if="n + 1 == adjectiveSlots">and</template>
+        <template v-else>, </template>
+      </template>
+    </template>
     <SelectWord
       v-bind:allWords="allNouns"
+      v-bind:defaultForm="Subject"
       v-on:wordUpdate="nounUpdate"
     ><slot></slot>
     <template v-slot:modifier><button class="add" v-on:click="addAdjective">+</button></template>
@@ -41,14 +49,14 @@ export default {
   },
   methods: {
     addAdjective: function() {
-      this.adjectiveSlots = 1;
+      this.adjectiveSlots += 1;
     },
-    adjectiveUpdate: function(adjective) {
-      this.adjectives[0] = adjective[0];
+    adjectiveUpdate: function(adjective, key) {
+      this.adjectives[key - 1] = adjective;
       this.nounPhraseUpdate();
     },
-    nounUpdate: function(nouns) {
-      this.noun = nouns[0];
+    nounUpdate: function(noun) {
+      this.noun = noun;
       this.nounPhraseUpdate();
     },
     nounPhraseUpdate: function() {
