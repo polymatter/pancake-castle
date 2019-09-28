@@ -5,7 +5,6 @@
       v-bind:allAdjectives="allAdjectives"
       v-on:nounPhraseUpdate="subjectUpdated"
     >{{ selectedPhrase.subject.noun ? formNoun(selectedPhrase.subject.noun) : "Subject" }}
-    <template v-slot:formAdjectives>{{ formAdjectives(selectedPhrase.subject.adjectives) }}</template>
     </NounPhrase>
     <Predicate
       v-bind:predicate="selectedPhrase.predicate"

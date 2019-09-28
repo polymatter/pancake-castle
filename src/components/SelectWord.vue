@@ -1,7 +1,10 @@
 <!-- Represents Editing a specific Predicate Argument -->
 <template>
   <span class="words" v-on:click="toggleMode">
-    <slot v-if="mode === 'view'"></slot>
+    <slot v-if="mode === 'view'">
+      <template v-if="words && words.length > 0">{{words[0].value}}</template>
+      <template v-else>{{defaultForm || 'Word'}}</template>
+    </slot>
     <template v-if="mode === 'edit'">
       <slot name="modifier"></slot>
       <select v-model="words" v-on:click.stop v-on:change="wordUpdate" multiple>
@@ -19,7 +22,8 @@ export default {
   name: "SelectWord",
   props: {
     allWords: Array,
-    eventName: String
+    eventName: String,
+    defaultForm: String
   },
   data: function() {
     return {

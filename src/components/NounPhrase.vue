@@ -6,10 +6,12 @@
       v-bind:key="n"
       v-bind:allWords="allAdjectives"
       v-bind:eventName="adjectiveUpdateName"
+      v-bind:defaultForm="'Adjective'"
       v-on:adjectiveUpdate="adjectiveUpdate"
-    ><slot name="formAdjectives">Adjective</slot></SelectWord>
+    ></SelectWord>
     <SelectWord
       v-bind:allWords="allNouns"
+      v-bind:defaultForm="Subject"
       v-on:wordUpdate="nounUpdate"
     ><slot></slot>
     <template v-slot:modifier><button class="add" v-on:click="addAdjective">+</button></template>
