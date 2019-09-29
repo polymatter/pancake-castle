@@ -46,12 +46,12 @@
             id="svg_33"
           />
         </g>
-        <g transform="rotate(26.9068 401.499 416.5)" id="svg_18">
+        <g transform="rotate(26.9068 401.499 416.5)" id="leg_rear_right">
           <path
             d="m382.15112,369.91843c1.0701,46.54706 9.33673,139.5798 14.08423,99.30112c1.18689,-10.06964 1.95825,-9.02277 2.77042,-4.86212c0.81216,4.16068 1.66516,11.43506 3.01529,13.8205c1.35013,2.38531 2.49988,2.3335 6.08234,-11.44958c3.58243,-13.78308 9.47964,-46.98749 11.63464,-96.92957l-40.05884,-1.18704l2.47192,1.3067z"
             stroke-width="5"
             stroke="#000000"
-            fill="#ff5656"
+            :fill="leg.rear.right.colour"
             id="svg_19"
           />
           <line
@@ -77,8 +77,8 @@
             stroke-linejoin="null"
             stroke-linecap="null"
             stroke-dasharray="null"
-            stroke="#ff5656"
-            fill="#ff5656"
+            :stroke="leg.rear.right.colour"
+            :fill="leg.rear.right.colour"
             id="svg_21"
           />
         </g>
@@ -383,10 +383,14 @@ export default {
       leg: {
         rear: {
           left: {
-            colour: "#0000ff"
+            colour: '#0000ff'
+          },
+          right: {
+            colour: '#0000ff'
           }
         }
-      }
+      },
+      unknown: '#0000ff'
     }
   },
   methods: {
