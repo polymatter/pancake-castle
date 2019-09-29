@@ -371,15 +371,15 @@ export default {
       leg: {
         rear: {
           left: {
-            colour: '#0000ff'
+            colour: '#ff5656'
           },
           right: {
-            colour: '#0000ff'
+            colour: '#ff5656'
           }
         }
       },
       body: {
-        colour: '#aaeecc'
+        colour: '#ff5656'
       },
       unknown: '#0000ff'
     }
