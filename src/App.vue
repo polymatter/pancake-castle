@@ -90,7 +90,7 @@ export default {
       if (Array.isArray(adjectives) && adjectives.length > 0) {
         result = "the " + this.andConcatinate(adjectives.map(a => a.value));
       } else {
-        result = "Adjective"
+        result = ""
       }
 
       return result;
