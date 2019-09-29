@@ -89,7 +89,7 @@
           stroke-linecap="null"
           stroke-dasharray="null"
           stroke="#000000"
-          fill="#ff5656"
+          :fill="body.colour"
           id="svg_8"
         />
         <ellipse
@@ -389,6 +389,9 @@ export default {
             colour: '#0000ff'
           }
         }
+      },
+      body: {
+        colour: '#aaeecc'
       },
       unknown: '#0000ff'
     }
