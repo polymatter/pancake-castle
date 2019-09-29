@@ -218,12 +218,12 @@
             id="svg_56"
           />
         </g>
-        <g id="svg_17">
+        <g id="leg_front_right">
           <path
             d="m416.00497,382.6817c1.2164,46.17685 10.6134,138.46967 16.01004,98.51129c1.34918,-9.98944 2.22601,-8.95093 3.14926,-4.82339c0.92319,4.12762 1.89282,11.34412 3.42755,13.71063c1.53476,2.36633 2.84171,2.31488 6.914,-11.35855c4.07233,-13.67352 10.77588,-46.61383 13.22556,-96.15866l-45.53632,-1.17764l2.80991,1.29633z"
             stroke-width="5"
             stroke="#000000"
-            fill="#ff5656"
+            :fill="leg.front.right.colour"
             id="svg_2"
           />
           <line
@@ -249,8 +249,8 @@
             stroke-linejoin="null"
             stroke-linecap="null"
             stroke-dasharray="null"
-            stroke="#ff5656"
-            fill="#ff5656"
+            :stroke="leg.front.right.colour"
+            :fill="leg.front.right.colour"
             id="svg_9"
           />
         </g>
@@ -259,7 +259,7 @@
             d="m462.50549,210.91858c1.21643,46.54703 10.6134,139.57959 16.01004,99.30099c1.34921,-10.06964 2.22604,-9.0228 3.14923,-4.86215c0.92325,4.16068 1.89288,11.43509 3.42761,13.82047c1.53473,2.38538 2.84171,2.33353 6.914,-11.44952c4.07227,-13.78308 10.77585,-46.98746 13.22549,-96.92944l-45.53635,-1.18707l2.80997,1.30673z"
             stroke-width="5"
             stroke="#000000"
-            fill="#ff5656"
+            :fill="leg.front.left.colour"
             id="svg_23"
           />
           <line
@@ -285,8 +285,8 @@
             stroke-linejoin="null"
             stroke-linecap="null"
             stroke-dasharray="null"
-            stroke="#ff5656"
-            fill="#ff5656"
+            :stroke="leg.front.left.colour"
+            :fill="leg.front.left.colour"
             id="svg_25"
           />
         </g>
@@ -404,6 +404,14 @@ export default {
         }
       },
       leg: {
+        front: {
+          left: {
+            colour: '#ff5656'
+          },
+          right: {
+            colour: '#ff5656'
+          }
+        },
         rear: {
           left: {
             colour: '#ff5656'
