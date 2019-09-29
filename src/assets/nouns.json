@@ -15,6 +15,12 @@
     "properties": ["size","judgeSize","feeling"]
   },
   {
+    "key": "Pig",
+    "value": "pig",
+    "categories": ["proper"],
+    "properties": ["colour","judgeSize","feeling"]
+  },
+  {
     "key": "Jeffrey",
     "value": "Jeffrey",
     "categories": ["proper","person"],

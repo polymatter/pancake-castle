@@ -1,5 +1,7 @@
 <template>
   <div id="app">
+    <Scene v-bind:sentence="selectedPhrase"></Scene>
+    <hr />
     <NounPhrase
       v-bind:allNouns="allNouns"
       v-bind:allAdjectives="allAdjectives"
@@ -30,6 +32,7 @@
 </template>
 
 <script>
+import Scene from "./components/Scene.vue";
 import NounPhrase from "./components/NounPhrase.vue";
 import Predicate from "./components/Predicate.vue";
 import Adjectives from "./assets/adjectives.json";
@@ -158,6 +161,7 @@ export default {
     }
   },
   components: {
+    Scene,
     NounPhrase,
     Predicate,
     Category
