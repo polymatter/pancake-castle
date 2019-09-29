@@ -100,7 +100,7 @@
             stroke-linecap="null"
             stroke-dasharray="null"
             stroke="#000000"
-            fill="#ffaaaa"
+            :fill="head.ear.left.colour"
             id="svg_12"
           />
           <path
@@ -110,7 +110,7 @@
             stroke-linecap="null"
             stroke-dasharray="null"
             stroke="#000000"
-            fill="#ffaaaa"
+            :fill="head.ear.right.colour"
             id="svg_13"
           />
           <path
@@ -120,10 +120,10 @@
             stroke-linecap="null"
             stroke-dasharray="null"
             stroke="#000000"
-            fill="#ff5656"
+            :fill="head.face.colour"
             id="svg_3"
           />
-          <g id="svg_27">
+          <g id="head">
             <path
               d="m425.03769,164.57681l53.62653,-1.8353c-4.41306,20.84714 -16.10538,31.4498 -25.18088,31.80875c-9.07639,0.35892 -22.82312,-8.56442 -28.44565,-29.97345z"
               stroke-width="5"
@@ -131,7 +131,7 @@
               stroke-linecap="null"
               stroke-dasharray="null"
               stroke="#000000"
-              fill="#ffaaaa"
+              :fill="head.mouth.colour"
               id="svg_15"
             />
             <path
@@ -141,7 +141,7 @@
               stroke-linecap="null"
               stroke-dasharray="null"
               stroke="#000000"
-              fill="#ffaaaa"
+              :fill="head.nose.colour"
               id="svg_11"
             />
             <ellipse
@@ -154,7 +154,7 @@
               stroke-linecap="null"
               stroke-dasharray="null"
               stroke="#000000"
-              fill="#666666"
+              :fill="head.nose.nostril.right.colour"
               id="svg_16"
             />
             <ellipse
@@ -167,10 +167,9 @@
               stroke-linecap="null"
               stroke-dasharray="null"
               stroke="#000000"
-              fill="#666666"
+              :fill="head.nose.nostril.left.colour"
               id="svg_26"
             />
-          </g>
           <ellipse
             ry="6.50869"
             rx="6.77603"
@@ -181,7 +180,7 @@
             stroke-linecap="null"
             stroke-dasharray="null"
             stroke="#000000"
-            fill="#000000"
+            :fill="head.eye.right.colour"
             id="svg_28"
           />
           <ellipse
@@ -194,9 +193,10 @@
             stroke-linecap="null"
             stroke-dasharray="null"
             stroke="#000000"
-            fill="#000000"
+            :fill="head.eye.left.colour"
             id="svg_29"
           />
+          </g>
           <path
             d="m405.44693,108.87735c9.58786,-10.12462 21.94144,-7.23187 27.1041,0"
             stroke-width="5"
@@ -368,6 +368,41 @@ export default {
   },
   data: function() {
     return {
+      head: {
+        ear: {
+          left: {
+            colour: '#ffaaaa'
+          },
+          right: {
+            colour: '#ffaaaa'
+          }
+        },
+        eye: {
+          left: {
+            colour: '#000000'
+          },
+          right: {
+            colour: '#000000'
+          }
+        },
+        face: {
+          colour: '#ff5656'
+        },
+        mouth: {
+          colour: '#ffaaaa'
+        },
+        nose: {
+          colour: '#ffaaaa',
+          nostril: {
+            right: {
+              colour: '#666666'
+            },
+            left: {
+              colour: '#666666'
+            }
+          }
+        }
+      },
       leg: {
         rear: {
           left: {
