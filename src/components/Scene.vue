@@ -15,7 +15,7 @@
             d="m492.15112,368.91843c1.07007,46.54706 9.33673,139.5798 14.08423,99.30112c1.18689,-10.06964 1.95825,-9.02277 2.77039,-4.86212c0.81219,4.16068 1.66516,11.43506 3.01532,13.8205c1.35016,2.38531 2.49988,2.3335 6.08234,-11.44958c3.5824,-13.78308 9.47961,-46.98749 11.63464,-96.92957l-40.05884,-1.18704l2.47192,1.3067z"
             stroke-width="5"
             stroke="#000000"
-            :fill="leg.rear.left"
+            :fill="leg.rear.left.colour"
             id="svg_31"
           />
           <line
@@ -41,8 +41,8 @@
             stroke-linejoin="null"
             stroke-linecap="null"
             stroke-dasharray="null"
-            :stroke="leg.rear.left"
-            :fill="leg.rear.left"
+            :stroke="leg.rear.left.colour"
+            :fill="leg.rear.left.colour"
             id="svg_33"
           />
         </g>
@@ -382,17 +382,19 @@ export default {
     return {
       leg: {
         rear: {
-          left: "#0000ff"
+          left: {
+            colour: "#0000ff"
+          }
         }
       }
     }
   },
   methods: {
     changeColour() {
-      if (this.leg.rear.left != '#ff00ff') {
-        this.leg.rear.left = '#ff00ff'
+      if (this.leg.rear.left.colour != '#ff00ff') {
+        this.leg.rear.left.colour = '#ff00ff'
       } else {
-        this.leg.rear.left = '#00ff00'
+        this.leg.rear.left.colour = '#00ff00'
       }
     }
   }
