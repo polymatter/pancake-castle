@@ -254,7 +254,7 @@
             id="svg_9"
           />
         </g>
-        <g transform="rotate(157.988 484.499 257.5)" id="svg_22">
+        <g transform="rotate(157.988 484.499 257.5)" id="leg_front_left" :class="rotateClass">
           <path
             d="m462.50549,210.91858c1.21643,46.54703 10.6134,139.57959 16.01004,99.30099c1.34921,-10.06964 2.22604,-9.0228 3.14923,-4.86215c0.92325,4.16068 1.89288,11.43509 3.42761,13.82047c1.53473,2.38538 2.84171,2.33353 6.914,-11.44952c4.07227,-13.78308 10.77585,-46.98746 13.22549,-96.92944l-45.53635,-1.18707l2.80997,1.30673z"
             stroke-width="5"
@@ -368,6 +368,7 @@ export default {
   },
   data: function() {
     return {
+      rotateClass: "",
       head: {
         ear: {
           left: {
@@ -431,8 +432,10 @@ export default {
     changeColour() {
       if (this.leg.rear.left.colour != '#ff00ff') {
         this.leg.rear.left.colour = '#ff00ff'
+        this.rotateClass = "";
       } else {
         this.leg.rear.left.colour = '#00ff00'
+        this.rotateClass = "rotate"
       }
     }
   }
@@ -441,6 +444,10 @@ export default {
 
 <style>
 * {
-  transition: all 0.5s ease;
+  transition: all 0.5s ease-in-out;
+}
+
+.rotate {
+   transform: translateY(173px);
 }
 </style>
