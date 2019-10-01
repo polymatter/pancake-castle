@@ -6,6 +6,7 @@
       xmlns="http://www.w3.org/2000/svg"
       xmlns:svg="http://www.w3.org/2000/svg"
       @click="changeColour"
+      class="bordered"
     >
       <!-- Created with SVG-edit - http://svg-edit.googlecode.com/ -->
       <g>
@@ -449,5 +450,9 @@ export default {
 
 .rotate {
    transform: translateY(173px);
+}
+
+.bordered {
+  border: 5px solid red;
 }
 </style>
