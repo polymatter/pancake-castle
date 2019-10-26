@@ -356,7 +356,12 @@
         </g>
       </g>
     </svg>
+        <canvas id="oink1" width="500" height="800">
+    </canvas>
 
+    <!-- <svg style="width: 500px; height: 800px; background-color: #eee">
+      <rect width="100" height="100" x="25" y="25" fill="orange" class="skippy"/>
+    </svg> -->
     <button @click="changeColour">click</button>
   </div>
 </template>
@@ -364,6 +369,11 @@
 <script>
 export default {
   name: "Scene",
+  mounted: function() {
+    // this.drawCanvas();
+    // window.setInterval(this.drawCanvas, 50)
+    window.requestAnimationFrame(this.drawCanvas);
+  },
   props: {
     sentence: Object
   },
@@ -426,10 +436,37 @@ export default {
       body: {
         colour: '#ff5656'
       },
-      unknown: '#0000ff'
+      unknown: '#0000ff',
+      tick: 0
     }
   },
   methods: {
+    drawCanvas() {
+      var ctx = document.getElementById('oink1').getContext('2d');
+      // var now = new Date();
+      // if (tick == now.getSeconds() % 2) {
+        // var ctx = this.canvas;
+        ctx.clearRect(0, 0, 500, 800)
+
+        ctx.font = '48px serif';
+        ctx.fillText(this.tick, 10, 50)
+
+        var x = 100;
+        var y = 100;
+
+        var leg = new Path2D('m0,0c1.21643,46.54703 10.6134,139.57959 16.01004,99.30099c1.34921,-10.06964 2.22604,-9.0228 3.14923,-4.86215c0.92325,4.16068 1.89288,11.43509 3.42761,13.82047c1.53473,2.38538 2.84171,2.33353 6.914,-11.44952c4.07227,-13.78308 10.77585,-46.98746 13.22549,-96.92944l-45.53635,-1.18707l2.80997,1.30673z');
+        // var leg = new Image();
+        // var tock = 2 * Math.PI / 100;
+        var radians = (Math.PI/180)*(this.tick++*2);
+        ctx.save();
+        ctx.translate(x,y);
+        ctx.rotate(radians);
+        ctx.fillStyle = 'rgb(200, 0, 0)';
+        ctx.fill(leg);
+        ctx.restore();
+        window.requestAnimationFrame(this.drawCanvas);
+      //}
+    },
     changeColour() {
       if (this.leg.rear.left.colour != '#ff00ff') {
         this.leg.rear.left.colour = '#ff00ff'
@@ -444,15 +481,52 @@ export default {
 </script>
 
 <style>
-* {
-  transition: all 0.5s ease-in-out;
+
+canvas {
+  border: 1px solid black;
 }
 
-.rotate {
-   transform: translateY(173px);
+/* .leg_front_left { */
+/* .leg_front_left { */
+#svg_25 {
+  animation: eating 5s infinite
+  /* transition: all 2s ease-in-out; */
 }
+
+@keyframes eating {
+  from {}
+
+  50% {
+   transform-origin: 50% 50%;
+   /* transform: translateY(0px) rotate3d(0,0,0.1,180deg); */
+   transform: rotate(90deg);
+   /* transform: rotateX(90deg); */
+  }
+
+  to {}
+}
+
+/* .rotate {
+} */
 
 .bordered {
   border: 5px solid red;
+}
+
+.skippy {
+  animation: skippyturn 5s infinite
+  /* transform-origin: 50% 50%;
+  transform: rotate(45deg); */
+}
+
+@keyframes skippyturn {
+  from {}
+
+  50% {
+    transform-origin: 50% 50%;
+    transform: rotate(90deg);
+  }
+
+  to {}
 }
 </style>
