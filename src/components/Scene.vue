@@ -1,362 +1,6 @@
 <template>
   <div>
-    <svg
-      width="800"
-      height="500"
-      xmlns="http://www.w3.org/2000/svg"
-      xmlns:svg="http://www.w3.org/2000/svg"
-      @click="changeColour"
-      class="bordered"
-    >
-      <!-- Created with SVG-edit - http://svg-edit.googlecode.com/ -->
-      <g>
-        <title>Layer 1</title>
-        <g transform="rotate(-19.4862 511.501 415.5)" id="leg_rear_left">
-          <path
-            d="m492.15112,368.91843c1.07007,46.54706 9.33673,139.5798 14.08423,99.30112c1.18689,-10.06964 1.95825,-9.02277 2.77039,-4.86212c0.81219,4.16068 1.66516,11.43506 3.01532,13.8205c1.35016,2.38531 2.49988,2.3335 6.08234,-11.44958c3.5824,-13.78308 9.47961,-46.98749 11.63464,-96.92957l-40.05884,-1.18704l2.47192,1.3067z"
-            stroke-width="5"
-            stroke="#000000"
-            :fill="leg.rear.left.colour"
-            id="svg_31"
-          />
-          <line
-            y2="451.802"
-            x2="518.978"
-            y1="450.989"
-            x1="495.225"
-            stroke-width="5"
-            stroke-linejoin="null"
-            stroke-linecap="null"
-            stroke-dasharray="null"
-            stroke="#000000"
-            fill="none"
-            id="svg_32"
-          />
-          <rect
-            height="23"
-            width="49"
-            y="312.271"
-            x="498.343"
-            transform="matrix(0.879009 0.0324951 -0.0351603 0.812376 63.3003 82.762)"
-            stroke-width="5"
-            stroke-linejoin="null"
-            stroke-linecap="null"
-            stroke-dasharray="null"
-            :stroke="leg.rear.left.colour"
-            :fill="leg.rear.left.colour"
-            id="svg_33"
-          />
-        </g>
-        <g transform="rotate(26.9068 401.499 416.5)" id="leg_rear_right">
-          <path
-            d="m382.15112,369.91843c1.0701,46.54706 9.33673,139.5798 14.08423,99.30112c1.18689,-10.06964 1.95825,-9.02277 2.77042,-4.86212c0.81216,4.16068 1.66516,11.43506 3.01529,13.8205c1.35013,2.38531 2.49988,2.3335 6.08234,-11.44958c3.58243,-13.78308 9.47964,-46.98749 11.63464,-96.92957l-40.05884,-1.18704l2.47192,1.3067z"
-            stroke-width="5"
-            stroke="#000000"
-            :fill="leg.rear.right.colour"
-            id="svg_19"
-          />
-          <line
-            y2="452.802"
-            x2="408.978"
-            y1="451.989"
-            x1="385.225"
-            stroke-width="5"
-            stroke-linejoin="null"
-            stroke-linecap="null"
-            stroke-dasharray="null"
-            stroke="#000000"
-            fill="none"
-            id="svg_20"
-          />
-          <rect
-            height="23"
-            width="49"
-            y="318.497"
-            x="373.45"
-            transform="matrix(0.879009 0.0324951 -0.0351603 0.812376 63.3003 82.762)"
-            stroke-width="5"
-            stroke-linejoin="null"
-            stroke-linecap="null"
-            stroke-dasharray="null"
-            :stroke="leg.rear.right.colour"
-            :fill="leg.rear.right.colour"
-            id="svg_21"
-          />
-        </g>
-        <path
-          d="m510.82086,197.49998c34.11182,24.73607 45.02771,46.44681 56.72333,74.20815c11.69556,27.76132 19.10254,39.15063 16.3736,75.80978c-2.7287,36.65921 -41.39166,77.4415 -78.42734,87.05121c-37.03589,9.60971 -66.71701,4.4389 -83.87048,2.30341c-17.15344,-2.1355 -49.00125,-11.05338 -69.27344,-49.84811c-20.27237,-38.79468 -20.66217,-61.57318 -5.84787,-104.63879c14.8143,-43.06564 31.9678,-62.64095 54.96899,-79.01302l109.35321,-5.87262l0,0z"
-          stroke-width="5"
-          stroke-linejoin="null"
-          stroke-linecap="null"
-          stroke-dasharray="null"
-          stroke="#000000"
-          :fill="body.colour"
-          id="svg_8"
-        />
-        <g id="svg_1">
-          <path
-            d="m506.91269,78.85278c18.07913,-13.82816 62.27249,-56.84906 54.23734,-41.48446c-8.03516,15.36462 9.45306,23.1866 4.25391,51.12227c-5.19922,27.93567 -16.14337,33.48926 -26.23248,39.37585c-8.6225,4.19707 -24.57813,8.3941 -36.86716,11.74638l4.6084,-60.76003l0,-0.00002l0,0l0,-0.00002l0,0.00002l0,0.00002l0,-0.00001z"
-            stroke-width="5"
-            stroke-linejoin="null"
-            stroke-linecap="null"
-            stroke-dasharray="null"
-            stroke="#000000"
-            :fill="head.ear.left.colour"
-            id="svg_12"
-          />
-          <path
-            d="m389.29382,84.45467c-19.04959,-12.71022 -33.0672,-39.06715 -57.86761,-38.13063c-1.19809,11.23851 4.6955,10.39973 0.07834,41.02695c-4.61716,30.6272 8.69067,33.4986 18.03574,41.25851c9.34506,7.75989 45.02509,22.20586 45.1449,6.01706c0.11984,-16.18877 -5.5112,-33.98308 -5.39136,-50.17187l0,0l0,-0.00002z"
-            stroke-width="5"
-            stroke-linejoin="null"
-            stroke-linecap="null"
-            stroke-dasharray="null"
-            stroke="#000000"
-            :fill="head.ear.right.colour"
-            id="svg_13"
-          />
-          <path
-            d="m470.81567,73.44116c39.46039,10.72705 53.94275,-12.77634 53.01245,-8.31665c-5.31445,3.61594 -9.83191,9.40143 -12.75488,18.07968c-2.92294,8.67825 6.37744,27.72218 -1.59436,43.39125c-7.97177,15.66907 1.85983,23.62436 7.9718,35.4362c0.53143,5.54442 3.45447,4.58017 1.59436,16.6333c-1.86011,12.05312 -44.90778,46.04294 -64.57156,43.39124c-19.66379,-2.65167 -23.38391,-3.85699 -51.0195,-20.97241c-27.63559,-17.11545 -9.56616,-42.66808 -5.58026,-55.68546c3.9859,-13.01736 -12.75488,-24.34756 -8.76898,-46.284c3.9859,-21.93643 -28.2999,-33.86905 -7.9718,-23.142c20.32809,10.72705 50.22232,-13.25819 89.68274,-2.53117l0,0.00002z"
-            stroke-width="5"
-            stroke-linejoin="null"
-            stroke-linecap="null"
-            stroke-dasharray="null"
-            stroke="#000000"
-            :fill="head.face.colour"
-            id="svg_3"
-          />
-          <g id="head">
-            <path
-              d="m425.03769,164.57681l53.62653,-1.8353c-4.41306,20.84714 -16.10538,31.4498 -25.18088,31.80875c-9.07639,0.35892 -22.82312,-8.56442 -28.44565,-29.97345z"
-              stroke-width="5"
-              stroke-linejoin="null"
-              stroke-linecap="null"
-              stroke-dasharray="null"
-              stroke="#000000"
-              :fill="head.mouth.colour"
-              id="svg_15"
-            />
-            <path
-              d="m424.02515,170.311c-9.1597,-12.00311 20.44739,-35.51913 43.63947,-22.14032c23.19223,13.37805 12.84003,24.97079 -0.90149,29.86302c-13.74237,4.89209 -33.57813,4.27971 -42.73798,-7.7227z"
-              stroke-width="5"
-              stroke-linejoin="null"
-              stroke-linecap="null"
-              stroke-dasharray="null"
-              stroke="#000000"
-              :fill="head.nose.colour"
-              id="svg_11"
-            />
-            <ellipse
-              ry="5.17319"
-              rx="6.10383"
-              cy="160.354"
-              cx="440.733"
-              stroke-width="5"
-              stroke-linejoin="null"
-              stroke-linecap="null"
-              stroke-dasharray="null"
-              stroke="#000000"
-              :fill="head.nose.nostril.right.colour"
-              id="svg_16"
-            />
-            <ellipse
-              ry="5.17319"
-              rx="6.10383"
-              cy="159.956"
-              cx="462.533"
-              stroke-width="5"
-              stroke-linejoin="null"
-              stroke-linecap="null"
-              stroke-dasharray="null"
-              stroke="#000000"
-              :fill="head.nose.nostril.left.colour"
-              id="svg_26"
-            />
-          <ellipse
-            ry="6.50869"
-            rx="6.77603"
-            cy="121.172"
-            cx="421.789"
-            stroke-width="5"
-            stroke-linejoin="null"
-            stroke-linecap="null"
-            stroke-dasharray="null"
-            stroke="#000000"
-            :fill="head.eye.right.colour"
-            id="svg_28"
-          />
-          <ellipse
-            ry="6.50869"
-            rx="6.77603"
-            cy="120.448"
-            cx="475.599"
-            stroke-width="5"
-            stroke-linejoin="null"
-            stroke-linecap="null"
-            stroke-dasharray="null"
-            stroke="#000000"
-            :fill="head.eye.left.colour"
-            id="svg_29"
-          />
-          </g>
-          <path
-            d="m405.44693,108.87735c9.58786,-10.12462 21.94144,-7.23187 27.1041,0"
-            stroke-width="5"
-            stroke-linejoin="null"
-            stroke-linecap="null"
-            stroke-dasharray="null"
-            stroke="#000000"
-            fill="none"
-            id="svg_55"
-          />
-          <path
-            d="m465.23541,108.53807c9.58786,-10.12462 21.94144,-7.23187 27.10413,0"
-            stroke-width="5"
-            stroke-linejoin="null"
-            stroke-linecap="null"
-            stroke-dasharray="null"
-            stroke="#000000"
-            fill="none"
-            id="svg_56"
-          />
-        </g>
-        <g id="leg_front_right">
-          <path
-            d="m416.00497,382.6817c1.2164,46.17685 10.6134,138.46967 16.01004,98.51129c1.34918,-9.98944 2.22601,-8.95093 3.14926,-4.82339c0.92319,4.12762 1.89282,11.34412 3.42755,13.71063c1.53476,2.36633 2.84171,2.31488 6.914,-11.35855c4.07233,-13.67352 10.77588,-46.61383 13.22556,-96.15866l-45.53632,-1.17764l2.80991,1.29633z"
-            stroke-width="5"
-            stroke="#000000"
-            :fill="leg.front.right.colour"
-            id="svg_2"
-          />
-          <line
-            y2="464.906"
-            x2="446.501"
-            y1="464.1"
-            x1="419.5"
-            stroke-width="5"
-            stroke-linejoin="null"
-            stroke-linecap="null"
-            stroke-dasharray="null"
-            stroke="#000000"
-            fill="none"
-            id="svg_5"
-          />
-          <rect
-            height="23"
-            width="49"
-            y="329.764"
-            x="420.065"
-            transform="matrix(0.999201 0.0322367 -0.039968 0.805915 7.42944 87.2264)"
-            stroke-width="5"
-            stroke-linejoin="null"
-            stroke-linecap="null"
-            stroke-dasharray="null"
-            :stroke="leg.front.right.colour"
-            :fill="leg.front.right.colour"
-            id="svg_9"
-          />
-        </g>
-        <g transform="rotate(157.988 484.499 257.5)" id="leg_front_left" :class="rotateClass">
-          <path
-            d="m462.50549,210.91858c1.21643,46.54703 10.6134,139.57959 16.01004,99.30099c1.34921,-10.06964 2.22604,-9.0228 3.14923,-4.86215c0.92325,4.16068 1.89288,11.43509 3.42761,13.82047c1.53473,2.38538 2.84171,2.33353 6.914,-11.44952c4.07227,-13.78308 10.77585,-46.98746 13.22549,-96.92944l-45.53635,-1.18707l2.80997,1.30673z"
-            stroke-width="5"
-            stroke="#000000"
-            :fill="leg.front.left.colour"
-            id="svg_23"
-          />
-          <line
-            y2="293.802"
-            x2="493"
-            y1="292.99"
-            x1="466"
-            stroke-width="5"
-            stroke-linejoin="null"
-            stroke-linecap="null"
-            stroke-dasharray="null"
-            stroke="#000000"
-            fill="none"
-            id="svg_24"
-          />
-          <rect
-            height="23"
-            width="49"
-            y="117.777"
-            x="456.342"
-            transform="matrix(0.999201 0.0324951 -0.039968 0.812376 9.2085 84.1295)"
-            stroke-width="5"
-            stroke-linejoin="null"
-            stroke-linecap="null"
-            stroke-dasharray="null"
-            :stroke="leg.front.left.colour"
-            :fill="leg.front.left.colour"
-            id="svg_25"
-          />
-        </g>
-        <g id="svg_44">
-          <path
-            d="m578.37054,374.39615c-2.17194,32.77515 16.50677,32.77515 24.76019,34.41388"
-            transform="rotate(-51.8082 590.664 391.603)"
-            stroke-width="5"
-            stroke-linejoin="null"
-            stroke-linecap="null"
-            stroke-dasharray="null"
-            stroke="#000000"
-            fill="none"
-            id="svg_37"
-          />
-          <ellipse
-            ry="10.2161"
-            rx="7.18448"
-            cy="370.76"
-            cx="637.457"
-            transform="rotate(-16.597 637.459 370.76)"
-            stroke-width="5"
-            stroke-linejoin="null"
-            stroke-linecap="null"
-            stroke-dasharray="null"
-            stroke="#000000"
-            fill="none"
-            id="svg_39"
-          />
-          <ellipse
-            ry="11.5"
-            rx="8"
-            cy="383"
-            cx="608.5"
-            transform="rotate(-15.732 608.499 383)"
-            stroke-width="5"
-            stroke-linejoin="null"
-            stroke-linecap="null"
-            stroke-dasharray="null"
-            stroke="#000000"
-            fill="none"
-            id="svg_40"
-          />
-          <path
-            d="m616.82849,376.56277c-1.78174,20.78781 13.54126,20.78781 20.31189,21.82721"
-            transform="rotate(-71.1869 626.913 387.476)"
-            stroke-width="5"
-            stroke-linejoin="null"
-            stroke-linecap="null"
-            stroke-dasharray="null"
-            stroke="#000000"
-            fill="none"
-            id="svg_41"
-          />
-          <path
-            d="m645.06848,363.31012c-1.71313,23.10669 13.01996,23.10669 19.52991,24.26202"
-            transform="rotate(-77.3095 654.765 375.441)"
-            stroke-width="5"
-            stroke-linejoin="null"
-            stroke-linecap="null"
-            stroke-dasharray="null"
-            stroke="#000000"
-            fill="none"
-            id="svg_42"
-          />
-        </g>
-      </g>
-    </svg>
-        <canvas id="oink1" width="500" height="800">
+    <canvas id="duckwalk" width="500" height="500">
     </canvas>
 
     <!-- <svg style="width: 500px; height: 800px; background-color: #eee">
@@ -379,102 +23,98 @@ export default {
   },
   data: function() {
     return {
-      rotateClass: "",
-      head: {
-        ear: {
-          left: {
-            colour: '#ffaaaa'
-          },
-          right: {
-            colour: '#ffaaaa'
-          }
-        },
-        eye: {
-          left: {
-            colour: '#000000'
-          },
-          right: {
-            colour: '#000000'
-          }
-        },
-        face: {
-          colour: '#ff5656'
-        },
-        mouth: {
-          colour: '#ffaaaa'
-        },
-        nose: {
-          colour: '#ffaaaa',
-          nostril: {
-            right: {
-              colour: '#666666'
-            },
-            left: {
-              colour: '#666666'
-            }
-          }
-        }
+      leftfoot: {
+        path: 'm0,0c2.54427,10.27924 -0.93736,41.29121 14.06043,36.06448c14.9978,-5.22674 33.23712,-16.09266 36.1554,-11.49882c2.91829,4.59384 -6.63079,8.697 -3.21381,16.72555l7.12026,2.2827c4.10962,5.58941 -5.24554,6.27209 -7.12026,12.35216c0.26782,3.48449 12.3935,10.1548 0.80345,10.45348c-11.59005,0.29867 -39.63704,-1.85602 -45.74144,-7.9361c-4.22967,-2.6027 -5.96587,-9.62146 -8.20076,-14.18685l-13.54789,-50.006l19.68461,5.74941l0.00001,0l0,-0.00001z',
+        startx: 279-50,
+        starty: 288
       },
-      leg: {
-        front: {
-          left: {
-            colour: '#ff5656'
-          },
-          right: {
-            colour: '#ff5656'
-          }
-        },
-        rear: {
-          left: {
-            colour: '#ff5656'
-          },
-          right: {
-            colour: '#ff5656'
-          }
-        }
+      rightfoot: {
+        path: 'm0,0c2.54427,10.27924 -0.93736,41.29121 14.06043,36.06448c14.9978,-5.22674 33.23712,-16.09266 36.1554,-11.49882c2.91829,4.59384 -6.63079,8.697 -3.21381,16.72555l7.12026,2.2827c4.10962,5.58941 -5.24554,6.27209 -7.12026,12.35216c0.26782,3.48449 12.3935,10.1548 0.80345,10.45348c-11.59005,0.29867 -39.63704,-1.85602 -45.74144,-7.9361c-4.22967,-2.6027 -5.96587,-9.62146 -8.20076,-14.18685l-13.54789,-50.006l19.68461,5.74941l0.00001,0l0,-0.00001z',
+        startx: 223+20,
+        starty: 295-15
       },
       body: {
-        colour: '#ff5656'
+        path: 'm0,0c6.45266,29.37629 29.86231,27.8698 49.07023,66.4356c19.20791,38.56579 21.00866,51.82278 4.50186,76.83029c-16.5068,25.00751 -44.11819,40.67485 -82.83414,43.38651c-38.71596,2.71166 -75.93129,0.30129 -106.24379,-13.55829c-30.3125,-13.85958 -62.72586,-36.15543 -90.03711,-63.272c-27.31125,-27.11658 -51.02104,-67.79143 -71.12932,-103.04297c36.31496,5.42331 76.83167,32.53989 110.74565,23.50103c33.91398,-9.03886 94.83909,-8.73756 104.44305,-10.84663c9.60396,-2.10906 20.10828,-8.73756 28.81188,-19.88549l52.67171,0.45194l-0.00002,0.00001z',
+        startx: 303,
+        starty: 121
       },
-      unknown: '#0000ff',
+      head: {
+        path: 'm0,0c16.40867,2.91673 56.72884,19.40517 66.24465,29.64347c9.5158,10.2383 -4.8799,32.61972 16.10368,37.85793c20.98358,5.2382 -1.62953,17.07882 9.80774,25.12518c11.43727,8.04635 -12.26507,12.37113 1.03265,8.94845c26.59546,-6.84537 -3.53333,1.13887 -9.89005,5.18922c-6.35672,4.05034 12.78151,-9.69114 -0.71447,-5.84433l8.54793,-1.27499l12.44374,10.89308l-6.58787,-1.96432c5.12389,2.64886 -9.02782,0.29763 -5.85588,2.94649l7.31986,1.51789c-1.21998,8.36327 -24.90584,-13.64652 -10.75412,-5.25349c14.15171,8.39303 -1.44563,5.90827 -29.50505,10.43216c-28.05942,4.5239 -74.17448,9.0478 -83.44629,5.7144c-9.27181,-3.33342 -27.52568,-5.015 -41.65452,-34.04088c-14.12883,-29.02589 -9.61493,-39.79993 -5.19253,-53.10377c4.42241,-13.30384 12.56575,-21.78616 25.07049,-28.39344c12.50475,-6.60729 30.62137,-11.30975 47.03005,-8.39303l-0.00002,-0.00001l0.00002,0.00001l-0.00001,-0.00002z',
+        startx: 263,
+        starty: 6
+      },
+      bottomLip: {
+        path: 'm0,0c6.91202,6.04632 39.24106,27.02534 38.98016,26.75948c-0.13045,-0.13293 2.97495,6.77028 -3.30453,8.09839c-6.27947,1.32812 -9.50384,0.28576 -16.08496,-2.93081c-6.58112,-3.21658 -5.38907,-1.1295 -12.59978,-5.92234l-6.35895,-1.93085c-4.45984,-0.30725 -4.0153,4.72216 -12.69713,-5.7723c-8.68182,-10.49446 -4.74777,-27.4578 -4.87822,-27.59072c-0.13045,-0.13293 5.6974,9.17057 9.97715,8.92043l6.96626,0.36874l-0.00001,-0.00002l0.00001,0l0.00001,0l-0.00001,-0.00001l0,0.00001z',
+        startx: 354,
+        starty: 95
+      },
+      topLip: {
+        path: 'm0,0c5.67932,-2.06036 9.68153,-0.89772 20.42578,2.68669c10.74425,3.58442 13.68149,4.19758 20.86813,4.18417c7.18664,-0.01341 12.93152,5.44664 16.58566,2.72332c5.938,-1.21036 9.8553,-2.87015 14.58088,-3.18167c4.72557,-0.31153 -2.82899,8.92198 -10.36568,10.01233c-7.53669,1.09035 -13.36846,9.92295 -25.94747,6.81277c-12.57902,-3.11018 -30.54295,-0.43601 -33.29152,-3.62216c-2.74857,-3.18615 -8.53511,-17.55509 -2.85578,-19.61545l0,0.00001l0,-0.00001z',
+        startx: 333,
+        starty: 75
+      },
       tick: 0
     }
   },
   methods: {
     drawCanvas() {
-      var ctx = document.getElementById('oink1').getContext('2d');
-      // var now = new Date();
-      // if (tick == now.getSeconds() % 2) {
-        // var ctx = this.canvas;
-        ctx.clearRect(0, 0, 500, 800)
+      var ctx = document.getElementById('duckwalk').getContext('2d');
+      this.tick = this.tick < 0 ? 90 : this.tick-1;
+      ctx.clearRect(0, 0, 500, 500)
 
-        ctx.font = '48px serif';
-        ctx.fillText(this.tick, 10, 50)
+      ctx.font = '48px serif';
+      ctx.fillText(this.tick, 10, 50)
+      var radians = (Math.PI/180)*((this.tick*4));
+      ctx.fillText(Math.round(radians), 60, 50);
+      var radians2 = (Math.PI/180)*((this.tick*4))
+      ctx.fillText(Math.round(radians2), 100, 50);
 
-        var x = 100;
-        var y = 100;
+      var leftLeg = new Path2D(this.leftfoot.path);
+      ctx.save();
+      ctx.translate(this.leftfoot.startx + (Math.sin(radians)*25),this.leftfoot.starty+ (Math.cos(radians) * 20));
+      ctx.rotate(radians > Math.PI ? (2*Math.PI-radians)/4 : radians / 4);
+      ctx.fillStyle = 'rgb(200, 0, 0)';
+      ctx.fill(leftLeg);
+      ctx.restore();
 
-        var leg = new Path2D('m-10,-10c1.21643,46.54703 10.6134,139.57959 16.01004,99.30099c1.34921,-10.06964 2.22604,-9.0228 3.14923,-4.86215c0.92325,4.16068 1.89288,11.43509 3.42761,13.82047c1.53473,2.38538 2.84171,2.33353 6.914,-11.44952c4.07227,-13.78308 10.77585,-46.98746 13.22549,-96.92944l-45.53635,-1.18707l2.80997,1.30673z');
-        // var leg = new Image();
-        // var tock = 2 * Math.PI / 100;
-        var radians = (Math.PI/180)*(this.tick++*2);
-        ctx.save();
-        ctx.translate(x,y);
-        ctx.rotate(radians);
-        ctx.fillStyle = 'rgb(200, 0, 0)';
-        ctx.fill(leg);
-        ctx.restore();
-        window.requestAnimationFrame(this.drawCanvas);
-      //}
-    },
-    changeColour() {
-      if (this.leg.rear.left.colour != '#ff00ff') {
-        this.leg.rear.left.colour = '#ff00ff'
-        this.rotateClass = "";
-      } else {
-        this.leg.rear.left.colour = '#00ff00'
-        this.rotateClass = "rotate"
-      }
+      var rightLeg = new Path2D(this.rightfoot.path);
+      ctx.save();
+      ctx.translate(this.rightfoot.starty + (Math.sin(radians2)*25), this.rightfoot.starty + (Math.cos(radians2) * 20));
+      ctx.rotate(radians2 > Math.PI ? (2*Math.PI-radians2)/4 : radians2 / 4);
+      ctx.fillStyle = 'rgb(200, 100, 0)';
+      ctx.fill(leftLeg);
+      ctx.restore();
+
+      var head = new Path2D(this.head.path);
+      ctx.save();
+      ctx.translate(this.head.startx, this.head.starty+ (Math.cos(radians) * 15) + (Math.cos(radians2) * 10));
+      ctx.fillStyle = '#ffff56';
+      ctx.fill(head);
+      ctx.restore();
+
+      var bottomLip = new Path2D(this.bottomLip.path);
+      ctx.save();
+      ctx.translate(this.bottomLip.startx, this.bottomLip.starty + (Math.cos(radians) * 15) + (Math.cos(radians2) * 10));
+      ctx.fillStyle = '#ffaa56';
+      ctx.fill(bottomLip);
+      ctx.restore();
+
+      var topLip = new Path2D(this.topLip.path);
+      ctx.save();
+      ctx.translate(this.topLip.startx, this.topLip.starty + (Math.cos(radians) * 15) + (Math.cos(radians2) * 10));
+      ctx.fillStyle = '#ffaa56';
+      ctx.fill(topLip);
+      ctx.stroke();
+      ctx.restore();
+
+      var body = new Path2D(this.body.path);
+      ctx.save();
+      ctx.translate(this.body.startx, this.body.starty+ (Math.cos(radians) * 15) + (Math.cos(radians2) * 10));
+      ctx.fillStyle = '#ffff56';
+      ctx.fill(body);
+      ctx.restore();
+
+      window.requestAnimationFrame(this.drawCanvas);
     }
   }
 };
